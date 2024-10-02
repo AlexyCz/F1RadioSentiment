@@ -1,0 +1,110 @@
+{
+  "lap_duration": 106.707,
+  "lap_sentiment": {
+    "-21": -0.5,
+    "9": 0.0,
+    "28": 0.16666666666666666,
+    "55": 0.125,
+    "59": 0.0
+  },
+  "radio": [
+    {
+      "session_key": 9598,
+      "meeting_key": 1245,
+      "driver_number": 63,
+      "date": "2024-09-15T10:24:28.310000+00:00",
+      "recording_url": "https://livetiming.formula1.com/static/2024/2024-09-15_Azerbaijan_Grand_Prix/2024-09-15_Race/TeamRadio/GEORUS01_63_20240915_122401.mp3",
+      "sentiment": -1.0,
+      "text": "The brakes just don't feel like they have great deceleration.",
+      "race_start": "2024-09-15T11:01:46.707000+00:00",
+      "delta": -2238.397,
+      "lap_number": -21
+    },
+    {
+      "session_key": 9598,
+      "meeting_key": 1245,
+      "driver_number": 63,
+      "date": "2024-09-15T10:25:35.557000+00:00",
+      "recording_url": "https://livetiming.formula1.com/static/2024/2024-09-15_Azerbaijan_Grand_Prix/2024-09-15_Race/TeamRadio/GEORUS01_63_20240915_122520.mp3",
+      "sentiment": 0.0,
+      "text": "You. The brakes just don't feel like they have great deceleration. Hopefully they improve. But similar feeling to the start of Q one understood.",
+      "race_start": "2024-09-15T11:01:46.707000+00:00",
+      "delta": -2171.15,
+      "lap_number": -21
+    },
+    {
+      "session_key": 9598,
+      "meeting_key": 1245,
+      "driver_number": 63,
+      "date": "2024-09-15T11:19:00.834000+00:00",
+      "recording_url": "https://livetiming.formula1.com/static/2024/2024-09-15_Azerbaijan_Grand_Prix/2024-09-15_Race/TeamRadio/GEORUS01_63_20240915_131840.mp3",
+      "sentiment": 0.0,
+      "text": "They are. Plus the bike to funny that left airbox. AFm will keep an eye.",
+      "race_start": "2024-09-15T11:01:46.707000+00:00",
+      "delta": 1034.127,
+      "lap_number": 9
+    },
+    {
+      "session_key": 9598,
+      "meeting_key": 1245,
+      "driver_number": 63,
+      "date": "2024-09-15T11:51:36.738000+00:00",
+      "recording_url": "https://livetiming.formula1.com/static/2024/2024-09-15_Azerbaijan_Grand_Prix/2024-09-15_Race/TeamRadio/GEORUS01_63_20240915_135118.mp3",
+      "sentiment": 0.0,
+      "text": "What? Laps. Do it. Strike. So we're thinking at least another ten laps for them.",
+      "race_start": "2024-09-15T11:01:46.707000+00:00",
+      "delta": 2990.031,
+      "lap_number": 28
+    },
+    {
+      "session_key": 9598,
+      "meeting_key": 1245,
+      "driver_number": 63,
+      "date": "2024-09-15T11:52:10.217000+00:00",
+      "recording_url": "https://livetiming.formula1.com/static/2024/2024-09-15_Azerbaijan_Grand_Prix/2024-09-15_Race/TeamRadio/GEORUS01_63_20240915_135159.mp3",
+      "sentiment": 0.3333333333333333,
+      "text": "Tires are looking really good here, mate. 25 laps remaining. We'll just let it play out ahead.",
+      "race_start": "2024-09-15T11:01:46.707000+00:00",
+      "delta": 3023.51,
+      "lap_number": 28
+    },
+    {
+      "session_key": 9598,
+      "meeting_key": 1245,
+      "driver_number": 63,
+      "date": "2024-09-15T12:40:16.225000+00:00",
+      "recording_url": "https://livetiming.formula1.com/static/2024/2024-09-15_Azerbaijan_Grand_Prix/2024-09-15_Race/TeamRadio/GEORUS01_63_20240915_144004.mp3",
+      "sentiment": 0.125,
+      "text": "George's second part of the race. Really rail driven. There's so much to learn here. Thanks, Joseph. Tires. Tires. Tires. Yep.",
+      "race_start": "2024-09-15T11:01:46.707000+00:00",
+      "delta": 5909.518,
+      "lap_number": 55
+    },
+    {
+      "session_key": 9598,
+      "meeting_key": 1245,
+      "driver_number": 63,
+      "date": "2024-09-15T12:48:28.029000+00:00",
+      "recording_url": "https://livetiming.formula1.com/static/2024/2024-09-15_Azerbaijan_Grand_Prix/2024-09-15_Race/TeamRadio/GEORUS01_63_20240915_144800.mp3",
+      "sentiment": 0.0,
+      "text": "It was crazy. With that crash and the sun right in my eyes, I literally could not see a thing driving into a haze. Glad everyone's okay. Yeah. Must have been pretty scary trying to pick up some rubber, but all I can find is leaves.",
+      "race_start": "2024-09-15T11:01:46.707000+00:00",
+      "delta": 6401.322,
+      "lap_number": 59
+    }
+  ],
+  "driver": {
+    "session_key": 9598,
+    "meeting_key": 1245,
+    "broadcast_name": "G RUSSELL",
+    "country_code": "GBR",
+    "first_name": "George",
+    "full_name": "George RUSSELL",
+    "headshot_url": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/G/GEORUS01_George_Russell/georus01.png.transform/1col/image.png",
+    "last_name": "Russell",
+    "driver_number": 63,
+    "team_colour": "27F4D2",
+    "team_name": "Mercedes",
+    "name_acronym": "RUS"
+  }
+}
