@@ -1,0 +1,136 @@
+{
+  "lap_duration": 107.834,
+  "lap_sentiment": {
+    "23": 0,
+    "32": 1,
+    "36": 1,
+    "37": 0,
+    "40": -0.25,
+    "48": -0.5,
+    "54": -0.2
+  },
+  "radio": [
+    {
+      "session_key": 9598,
+      "meeting_key": 1245,
+      "driver_number": 16,
+      "date": "2024-09-15T11:43:18.826000+00:00",
+      "recording_url": "https://livetiming.formula1.com/static/2024/2024-09-15_Azerbaijan_Grand_Prix/2024-09-15_Race/TeamRadio/CHALEC01_16_20240915_134258.mp3",
+      "sentiment": 0,
+      "text": "They are pushing like crazy. Or they have more grip than us. Copy. Just keep doing a good job on ties. It's still very long.",
+      "race_start": "2024-09-15T11:01:47.834000+00:00",
+      "delta": 2490.992,
+      "lap_number": 23
+    },
+    {
+      "session_key": 9598,
+      "meeting_key": 1245,
+      "driver_number": 16,
+      "date": "2024-09-15T12:00:27.142000+00:00",
+      "recording_url": "https://livetiming.formula1.com/static/2024/2024-09-15_Azerbaijan_Grand_Prix/2024-09-15_Race/TeamRadio/CHALEC01_16_20240915_140012.mp3",
+      "sentiment": 1,
+      "text": "Keep it nice and tidy. This is good fighting.",
+      "race_start": "2024-09-15T11:01:47.834000+00:00",
+      "delta": 3519.308,
+      "lap_number": 32
+    },
+    {
+      "session_key": 9598,
+      "meeting_key": 1245,
+      "driver_number": 16,
+      "date": "2024-09-15T12:08:13.026000+00:00",
+      "recording_url": "https://livetiming.formula1.com/static/2024/2024-09-15_Azerbaijan_Grand_Prix/2024-09-15_Race/TeamRadio/CHALEC01_16_20240915_140759.mp3",
+      "sentiment": 1,
+      "text": "Come on, Charles, keep it up.",
+      "race_start": "2024-09-15T11:01:47.834000+00:00",
+      "delta": 3985.192,
+      "lap_number": 36
+    },
+    {
+      "session_key": 9598,
+      "meeting_key": 1245,
+      "driver_number": 16,
+      "date": "2024-09-15T12:09:53.337000+00:00",
+      "recording_url": "https://livetiming.formula1.com/static/2024/2024-09-15_Azerbaijan_Grand_Prix/2024-09-15_Race/TeamRadio/CHALEC01_16_20240915_140916.mp3",
+      "sentiment": 0,
+      "text": "Box. Officer mclaren.",
+      "race_start": "2024-09-15T11:01:47.834000+00:00",
+      "delta": 4085.503,
+      "lap_number": 37
+    },
+    {
+      "session_key": 9598,
+      "meeting_key": 1245,
+      "driver_number": 16,
+      "date": "2024-09-15T12:13:44.034000+00:00",
+      "recording_url": "https://livetiming.formula1.com/static/2024/2024-09-15_Azerbaijan_Grand_Prix/2024-09-15_Race/TeamRadio/CHALEC01_16_20240915_141318.mp3",
+      "sentiment": -0.5,
+      "text": "We're thinking about plan C. What do you think? Not stupid.",
+      "race_start": "2024-09-15T11:01:47.834000+00:00",
+      "delta": 4316.2,
+      "lap_number": 40
+    },
+    {
+      "session_key": 9598,
+      "meeting_key": 1245,
+      "driver_number": 16,
+      "date": "2024-09-15T12:15:24.357000+00:00",
+      "recording_url": "https://livetiming.formula1.com/static/2024/2024-09-15_Azerbaijan_Grand_Prix/2024-09-15_Race/TeamRadio/CHALEC01_16_20240915_141500.mp3",
+      "sentiment": 0,
+      "text": "But just he start to struggle. Copy. Keep it up.",
+      "race_start": "2024-09-15T11:01:47.834000+00:00",
+      "delta": 4416.523,
+      "lap_number": 40
+    },
+    {
+      "session_key": 9598,
+      "meeting_key": 1245,
+      "driver_number": 16,
+      "date": "2024-09-15T12:29:44.363000+00:00",
+      "recording_url": "https://livetiming.formula1.com/static/2024/2024-09-15_Azerbaijan_Grand_Prix/2024-09-15_Race/TeamRadio/CHALEC01_16_20240915_142410.mp3",
+      "sentiment": 0,
+      "text": "Come on.",
+      "race_start": "2024-09-15T11:01:47.834000+00:00",
+      "delta": 5276.529,
+      "lap_number": 48
+    },
+    {
+      "session_key": 9598,
+      "meeting_key": 1245,
+      "driver_number": 16,
+      "date": "2024-09-15T12:29:44.541000+00:00",
+      "recording_url": "https://livetiming.formula1.com/static/2024/2024-09-15_Azerbaijan_Grand_Prix/2024-09-15_Race/TeamRadio/CHALEC01_16_20240915_142931.mp3",
+      "sentiment": -1,
+      "text": "Don't realize don't realize at all.",
+      "race_start": "2024-09-15T11:01:47.834000+00:00",
+      "delta": 5276.707,
+      "lap_number": 48
+    },
+    {
+      "session_key": 9598,
+      "meeting_key": 1245,
+      "driver_number": 16,
+      "date": "2024-09-15T12:39:43.850000+00:00",
+      "recording_url": "https://livetiming.formula1.com/static/2024/2024-09-15_Azerbaijan_Grand_Prix/2024-09-15_Race/TeamRadio/CHALEC01_16_20240915_143914.mp3",
+      "sentiment": -0.2,
+      "text": "P two. Not what we wanted, but some good points. Thank you. Obviously very unlucky in the last laps with Carlos. We were struggling so much more with the car we were struggling so much more with the car and hard.",
+      "race_start": "2024-09-15T11:01:47.834000+00:00",
+      "delta": 5876.016,
+      "lap_number": 54
+    }
+  ],
+  "driver": {
+    "session_key": 9598,
+    "meeting_key": 1245,
+    "broadcast_name": "C LECLERC",
+    "country_code": "MON",
+    "first_name": "Charles",
+    "full_name": "Charles LECLERC",
+    "headshot_url": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/C/CHALEC01_Charles_Leclerc/chalec01.png.transform/1col/image.png",
+    "last_name": "Leclerc",
+    "driver_number": 16,
+    "team_colour": "E80020",
+    "team_name": "Ferrari",
+    "name_acronym": "LEC"
+  }
+}
