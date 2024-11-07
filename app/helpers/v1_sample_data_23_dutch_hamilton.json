@@ -1,0 +1,463 @@
+{
+    "status_code": 200,
+    "data": {
+      "lap_duration": 73.904,
+      "lap_sentiment": [
+        {
+          "sentiment": 0
+        },
+        {
+          "sentiment": 0
+        },
+        {
+          "sentiment": 0.3333333333333333
+        },
+        {
+          "sentiment": 0
+        },
+        {
+          "sentiment": 0
+        },
+        {
+          "sentiment": 0
+        },
+        {
+          "sentiment": 0
+        },
+        {
+          "sentiment": 0
+        },
+        {
+          "sentiment": 0.21052631578947367
+        }
+      ],
+      "radio": [
+        {
+          "date": "2023-08-27T13:07:41+00:00",
+          "driver_number": 44,
+          "session_key": 9149,
+          "meeting_key": 1217,
+          "recording_url": "https://livetiming.formula1.com/static/2023/2023-08-27_Dutch_Grand_Prix/2023-08-27_Race/TeamRadio/LEWHAM01_44_20230827_150738.mp3",
+          "lap_number": 3,
+          "lap_date_start": "2023-08-27T13:06:38.845000+00:00",
+          "sentiment": 0,
+          "conversation_analysis": [
+            {
+              "text": "We should have come in, man.",
+              "start": 4480,
+              "end": 5224,
+              "confidence": 0.72299194,
+              "speaker": "A",
+              "sentiment": "NEUTRAL"
+            },
+            {
+              "text": "This is very wet copy, Lewis, so we're going to stay out.",
+              "start": 5225,
+              "end": 8153,
+              "confidence": 0.5320849,
+              "speaker": "A",
+              "sentiment": "NEUTRAL"
+            },
+            {
+              "text": "We're going to have to brave this, I think.",
+              "start": 8169,
+              "end": 9145,
+              "confidence": 0.69652313,
+              "speaker": "A",
+              "sentiment": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "date": "2023-08-27T13:37:01.781000+00:00",
+          "driver_number": 44,
+          "session_key": 9149,
+          "meeting_key": 1217,
+          "recording_url": "https://livetiming.formula1.com/static/2023/2023-08-27_Dutch_Grand_Prix/2023-08-27_Race/TeamRadio/LEWHAM01_44_20230827_143618.mp3",
+          "lap_number": 22,
+          "lap_date_start": "2023-08-27T13:36:43.219000+00:00",
+          "sentiment": 0,
+          "conversation_analysis": [
+            {
+              "text": "Do have reports that leclerc may have had some damage, so missing some rear downforce.",
+              "start": 2960,
+              "end": 8245,
+              "confidence": 0.49870655,
+              "speaker": "A",
+              "sentiment": "NEUTRAL"
+            },
+            {
+              "text": "See ahead of me.",
+              "start": 8945,
+              "end": 10257,
+              "confidence": 0.6186076,
+              "speaker": "A",
+              "sentiment": "NEUTRAL"
+            },
+            {
+              "text": "Leclerc car ahead.",
+              "start": 10441,
+              "end": 11885,
+              "confidence": 0.846454,
+              "speaker": "A",
+              "sentiment": "NEUTRAL"
+            },
+            {
+              "text": "He was 1.7 slower for the safety car.",
+              "start": 12785,
+              "end": 16065,
+              "confidence": 0.6938734,
+              "speaker": "A",
+              "sentiment": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "date": "2023-08-27T13:42:40.635000+00:00",
+          "driver_number": 44,
+          "session_key": 9149,
+          "meeting_key": 1217,
+          "recording_url": "https://livetiming.formula1.com/static/2023/2023-08-27_Dutch_Grand_Prix/2023-08-27_Race/TeamRadio/LEWHAM01_44_20230827_144235.mp3",
+          "lap_number": 26,
+          "lap_date_start": "2023-08-27T13:41:55.838000+00:00",
+          "sentiment": 0.3333333333333333,
+          "conversation_analysis": [
+            {
+              "text": "Nice.",
+              "start": 1800,
+              "end": 2224,
+              "confidence": 0.7344968,
+              "speaker": "A",
+              "sentiment": "POSITIVE"
+            },
+            {
+              "text": "Next car.",
+              "start": 2224,
+              "end": 2729,
+              "confidence": 0.74349153,
+              "speaker": "A",
+              "sentiment": "NEUTRAL"
+            },
+            {
+              "text": "Norris are one second ahead.",
+              "start": 2777,
+              "end": 4025,
+              "confidence": 0.6552826,
+              "speaker": "A",
+              "sentiment": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "date": "2023-08-27T13:51:42.094000+00:00",
+          "driver_number": 44,
+          "session_key": 9149,
+          "meeting_key": 1217,
+          "recording_url": "https://livetiming.formula1.com/static/2023/2023-08-27_Dutch_Grand_Prix/2023-08-27_Race/TeamRadio/LEWHAM01_44_20230827_145133.mp3",
+          "lap_number": 33,
+          "lap_date_start": "2023-08-27T13:50:53.079000+00:00",
+          "sentiment": 0,
+          "conversation_analysis": [
+            {
+              "text": "Okay, copy.",
+              "start": 4280,
+              "end": 4696,
+              "confidence": 0.6892622,
+              "speaker": "A",
+              "sentiment": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "date": "2023-08-27T13:58:26.633000+00:00",
+          "driver_number": 44,
+          "session_key": 9149,
+          "meeting_key": 1217,
+          "recording_url": "https://livetiming.formula1.com/static/2023/2023-08-27_Dutch_Grand_Prix/2023-08-27_Race/TeamRadio/LEWHAM01_44_20230827_145812.mp3",
+          "lap_number": 38,
+          "lap_date_start": "2023-08-27T13:57:14.322000+00:00",
+          "sentiment": 0,
+          "conversation_analysis": [
+            {
+              "text": "And Lucifer gives a balance check.",
+              "start": 1600,
+              "end": 3040,
+              "confidence": 0.8455474,
+              "speaker": "A",
+              "sentiment": "NEUTRAL"
+            },
+            {
+              "text": "Balance check.",
+              "start": 3129,
+              "end": 3585,
+              "confidence": 0.6793454,
+              "speaker": "A",
+              "sentiment": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "date": "2023-08-27T14:22:41.326000+00:00",
+          "driver_number": 44,
+          "session_key": 9149,
+          "meeting_key": 1217,
+          "recording_url": "https://livetiming.formula1.com/static/2023/2023-08-27_Dutch_Grand_Prix/2023-08-27_Race/TeamRadio/LEWHAM01_44_20230827_152209.mp3",
+          "lap_number": 57,
+          "lap_date_start": "2023-08-27T14:21:29.203000+00:00",
+          "sentiment": 0,
+          "conversation_analysis": [
+            {
+              "text": "So this rain is looking imminent and it will be heavy, so you can use the tyres.",
+              "start": 1840,
+              "end": 5025,
+              "confidence": 0.6558974,
+              "speaker": "A",
+              "sentiment": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "date": "2023-08-27T14:26:05.713000+00:00",
+          "driver_number": 44,
+          "session_key": 9149,
+          "meeting_key": 1217,
+          "recording_url": "https://livetiming.formula1.com/static/2023/2023-08-27_Dutch_Grand_Prix/2023-08-27_Race/TeamRadio/LEWHAM01_44_20230827_152523.mp3",
+          "lap_number": 60,
+          "lap_date_start": "2023-08-27T14:25:12.745000+00:00",
+          "sentiment": 0,
+          "conversation_analysis": [
+            {
+              "text": "George.",
+              "start": 2120,
+              "end": 2296,
+              "confidence": 0.61412704,
+              "speaker": "A",
+              "sentiment": "NEUTRAL"
+            },
+            {
+              "text": "Let's pass from a much different tire strategy too.",
+              "start": 2296,
+              "end": 4765,
+              "confidence": 0.832465,
+              "speaker": "A",
+              "sentiment": "NEUTRAL"
+            },
+            {
+              "text": "Yeah, we're trying to get the message to him.",
+              "start": 6825,
+              "end": 8441,
+              "confidence": 0.85342586,
+              "speaker": "A",
+              "sentiment": "NEUTRAL"
+            },
+            {
+              "text": "Should be this straight.",
+              "start": 8513,
+              "end": 9185,
+              "confidence": 0.75723827,
+              "speaker": "A",
+              "sentiment": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "date": "2023-08-27T14:26:38.775000+00:00",
+          "driver_number": 44,
+          "session_key": 9149,
+          "meeting_key": 1217,
+          "recording_url": "https://livetiming.formula1.com/static/2023/2023-08-27_Dutch_Grand_Prix/2023-08-27_Race/TeamRadio/LEWHAM01_44_20230827_162636.mp3",
+          "lap_number": 61,
+          "lap_date_start": "2023-08-27T14:26:32.775000+00:00",
+          "sentiment": 0,
+          "conversation_analysis": [
+            {
+              "text": "George Left pass from a much different tire strategy, too.",
+              "start": 2640,
+              "end": 4825,
+              "confidence": 0.8752142,
+              "speaker": "A",
+              "sentiment": "NEUTRAL"
+            }
+          ]
+        },
+        {
+          "date": "2023-08-27T15:30:38.926000+00:00",
+          "driver_number": 44,
+          "session_key": 9149,
+          "meeting_key": 1217,
+          "recording_url": "https://livetiming.formula1.com/static/2023/2023-08-27_Dutch_Grand_Prix/2023-08-27_Race/TeamRadio/LEWHAM01_44_20230827_163448.mp3",
+          "lap_number": 72,
+          "lap_date_start": "2023-08-27T15:26:00.477000+00:00",
+          "sentiment": 0.21052631578947367,
+          "conversation_analysis": [
+            {
+              "text": "Well done, Lewis.",
+              "start": 1280,
+              "end": 2136,
+              "confidence": 0.8567329,
+              "speaker": "A",
+              "sentiment": "POSITIVE"
+            },
+            {
+              "text": "That was.",
+              "start": 2193,
+              "end": 2841,
+              "confidence": 0.5993662,
+              "speaker": "A",
+              "sentiment": "NEUTRAL"
+            },
+            {
+              "text": "That was a hectic one.",
+              "start": 2953,
+              "end": 4065,
+              "confidence": 0.6136328,
+              "speaker": "A",
+              "sentiment": "NEUTRAL"
+            },
+            {
+              "text": "So.",
+              "start": 4145,
+              "end": 4313,
+              "confidence": 0.61702776,
+              "speaker": "A",
+              "sentiment": "NEUTRAL"
+            },
+            {
+              "text": "Yeah, P6, final position.",
+              "start": 4329,
+              "end": 7085,
+              "confidence": 0.8544333,
+              "speaker": "A",
+              "sentiment": "NEUTRAL"
+            },
+            {
+              "text": "A really great drive and.",
+              "start": 7465,
+              "end": 8977,
+              "confidence": 0.9537369,
+              "speaker": "A",
+              "sentiment": "POSITIVE"
+            },
+            {
+              "text": "Yeah, let's say hectic day.",
+              "start": 9081,
+              "end": 11353,
+              "confidence": 0.64335334,
+              "speaker": "A",
+              "sentiment": "NEUTRAL"
+            },
+            {
+              "text": "Yeah.",
+              "start": 11449,
+              "end": 11633,
+              "confidence": 0.5491448,
+              "speaker": "A",
+              "sentiment": "NEUTRAL"
+            },
+            {
+              "text": "Thanks, Warner.",
+              "start": 11649,
+              "end": 12485,
+              "confidence": 0.6848017,
+              "speaker": "B",
+              "sentiment": "POSITIVE"
+            },
+            {
+              "text": "Sorry, guys.",
+              "start": 13825,
+              "end": 14929,
+              "confidence": 0.5902701,
+              "speaker": "B",
+              "sentiment": "NEGATIVE"
+            },
+            {
+              "text": "Solid job.",
+              "start": 15097,
+              "end": 15729,
+              "confidence": 0.6328889,
+              "speaker": "B",
+              "sentiment": "POSITIVE"
+            },
+            {
+              "text": "Done with the pit stops.",
+              "start": 15777,
+              "end": 17325,
+              "confidence": 0.58980095,
+              "speaker": "B",
+              "sentiment": "NEUTRAL"
+            },
+            {
+              "text": "Thank you for the hard work.",
+              "start": 17745,
+              "end": 19025,
+              "confidence": 0.9667574,
+              "speaker": "B",
+              "sentiment": "POSITIVE"
+            },
+            {
+              "text": "Let's keep up the fight.",
+              "start": 19105,
+              "end": 20649,
+              "confidence": 0.7445637,
+              "speaker": "B",
+              "sentiment": "POSITIVE"
+            },
+            {
+              "text": "It's not the day we wanted.",
+              "start": 20737,
+              "end": 22045,
+              "confidence": 0.8824799,
+              "speaker": "B",
+              "sentiment": "NEGATIVE"
+            },
+            {
+              "text": "Yeah, yeah.",
+              "start": 26595,
+              "end": 27259,
+              "confidence": 0.49353635,
+              "speaker": "A",
+              "sentiment": "NEUTRAL"
+            },
+            {
+              "text": "Right on there, Lewis.",
+              "start": 27307,
+              "end": 28419,
+              "confidence": 0.75924104,
+              "speaker": "A",
+              "sentiment": "NEUTRAL"
+            },
+            {
+              "text": "Yeah.",
+              "start": 28467,
+              "end": 28851,
+              "confidence": 0.5491448,
+              "speaker": "A",
+              "sentiment": "NEUTRAL"
+            },
+            {
+              "text": "Not that we wanted, but yeah, we'll keep battling on.",
+              "start": 28923,
+              "end": 31275,
+              "confidence": 0.5337527,
+              "speaker": "A",
+              "sentiment": "NEUTRAL"
+            }
+          ]
+        }
+      ],
+      "driver": {
+        "session_key": 9149,
+        "driver_number": 44,
+        "broadcast_name": "L HAMILTON",
+        "full_name": "Lewis HAMILTON",
+        "name_acronym": "HAM",
+        "team_name": "Mercedes",
+        "team_colour": "6CD3BF",
+        "first_name": "Lewis",
+        "last_name": "Hamilton",
+        "headshot_url": "https://www.formula1.com/content/dam/fom-website/drivers/L/LEWHAM01_Lewis_Hamilton/lewham01.png.transform/1col/image.png",
+        "country_code": "GBR",
+        "meeting_key": 1217
+      }
+    }
+  }
