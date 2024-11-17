@@ -5,6 +5,10 @@ import pandas as pd
 
 
 class SessionData:
+    """
+    API Data Store class containing all necessary data structures needed across
+        all requests throughout a session.
+    """
     def __init__(self) -> None:
         self.drivers_df = pd.DataFrame(columns=["session_key"])
         self.laps_df = pd.DataFrame(columns=["session_key"])
@@ -16,12 +20,16 @@ class SessionData:
         self.desired_year = 2023
 
 
-app_session_data = SessionData()
+app_session_data = SessionData()  # Instantiate app data store object
 
 
 def get_app_session_data():
+    """
+    Retrieves SessionData data store object for endpoints.
+    """
     return app_session_data
 
+# Utility functions using dependency injection.
 def get_session_key(data: SessionData = Depends(get_app_session_data)):
     return data.current_session_key
 

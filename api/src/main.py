@@ -51,8 +51,9 @@ def get_available_races_by_year(input_year: int,
 def get_driver_race_data(driver_name: str,
                          data: SessionData = Depends(get_app_session_data)):
     """
-        GETs all necessary blob of info for application visualization.
-            We prune and set info up by way of filtering for input driver.
+        GETs all necessary driver race data object for application visualization.
+            We aggregate desired information and set data up by way of filtering
+            with prior inputs from user.
     """
     try:
         driver_radio_data = driver_race_radio_data(drivers_df=data.drivers_df,
@@ -68,7 +69,8 @@ def get_driver_race_data(driver_name: str,
 def get_participating_drivers(meeting_name: str,
                               data: SessionData = Depends(get_app_session_data)):
     """
-        Gets all participating drivers for provided session_key [Race ID], and returns the list.
+        GETs all participating drivers for provided Grand Prix (e.g. `Mexico City Grand Prix`), and
+            returns the full driver list.
     """
     try:
         (available_drivers,

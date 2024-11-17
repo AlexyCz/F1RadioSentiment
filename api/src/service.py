@@ -12,7 +12,10 @@ from api.src.utils import convert_to_dt, standardize_with_microseconds
 def available_races_by_year(meetings_df: pd.DataFrame,
                             year: int = 2023):
     """
-    Given year as input, return all Grand Prix for arg Formula 1 calendar year.
+    Finds race meeting information for given year; returns updated meetings_df (to
+        update data storelist) and a list of grand prix.
+
+    return: tuple -> (grandprix: List, meetings_df: DataFrame)
     """
     race_data = _process_open_f1_request(FormulaOneUrls.GET_MEETINGS, year=year)
     race_data_df = pd.DataFrame(race_data).iloc[1:]  # removes "pre-season testing" index [0] from meetings df
@@ -34,7 +37,13 @@ def participating_drivers(drivers_df: pd.DataFrame,
                           current_session_key: int,
                           meeting_name: str = "Dutch Grand Prix"):
     """
-        Gets all participating drivers for provided session_key [Race ID], and returns the list.
+    Finds all drivers participating in user desired Grand Prix. Returns list of
+        driver name strings,along with data store dataframes and vars to update.
+
+    return: tuple -> List,
+                     drivers_df: DataFrame,
+                     sessions_df: DataFrame,
+                     current_session_key: int
     """
     current_meeting_df = meetings_df.loc[(meetings_df.meeting_name==meeting_name) &
                                           (meetings_df.year == year)]
@@ -59,20 +68,13 @@ def driver_race_radio_data(drivers_df: pd.DataFrame,
                            current_session_key: int,
                            driver_name: str = "Lewis HAMILTON"):
     """
-    1 - filters driver df to desired driver
-    2 - get driver num and session key from drivers df
-    3 - make laps df from get request to openf1/laps
-    4 - make radio df from get request to openf1/team_radio
-    5 - make list of recordings from the "recording_url" col in radio df
-    6 - loop through recording urls
-        6a - transcribe audio
-        6b - create transcriptions list that hold ordered dicts with url, sentiments, and text
-            6b.1 - map the sentiment from -1 - 1 as a sliding scale, and get avg.
-    7 - merge transcriptions df to radio df
-    8 - take a lap duration mode -> alt: start using date_start value for laps in laps df
-    9 - get lap number based on window of radio time stamp to laps date_start value
-    10 - get lap specific sentiment avg
-    11 - return json
+    Processes and agreggates all transcribed radio data for user desired driver.
+        We return the finalized object containing required data.
+
+    return: Dict -> lap_duration: float,
+                    lap_avg_sentiment: List(Dict),
+                    radio: List(Dict),
+                    driver: Dict
     """
     current_driver_df = drivers_df.loc[(drivers_df.full_name==driver_name) &
                                          (drivers_df.session_key==current_session_key)]
@@ -112,13 +114,14 @@ def driver_race_radio_data(drivers_df: pd.DataFrame,
 def _process_open_f1_request(request: FormulaOneUrls, **kwargs):
     """
     Sends Open F1 API request given request enum and respective url parameters.
-
-    request: FormulaOneUrls Enum
+        Returns the deserialized json response, prepared for processing.
 
     driver_num:  required for GET_LAPS, GET_RADIO
     meeting_key: required for GET_SESSIONS
     session_key: required for GET_DRIVERS, GET_LAPS, GET_RADIO
     year:        required for GET_MEETINGS
+
+    return: Dict
     """
     resp = requests.Response()
     if request == FormulaOneUrls.GET_DRIVERS:
@@ -155,6 +158,8 @@ def _set_radio_lap_numbers(radios_df: pd.DataFrame, laps_df: pd.DataFrame):
     """
     Returns radios dataframe with new lap number column merged on non-exact timestamp
         criteria leveraging pandas Merge_asof() functionality.
+
+    return: radios_df: DataFrame
     """
     radios_df = (pd.merge_asof(radios_df, laps_df[["lap_number", "date_start"]],
                               left_on="date",
@@ -167,6 +172,8 @@ def _transcribe_radio_recordings(radios_df: pd.DataFrame):
     """
     Given radios dataframe, return new columns with respective transcribed audio text
         and sentiment values.
+
+    return: radios_df: DataFrame
     """
     recordings = radios_df["recording_url"].to_list()
 
@@ -200,12 +207,18 @@ def _transcribe_radio_recordings(radios_df: pd.DataFrame):
 def _get_lap_time_mode(laps_df: pd.DataFrame):
     """
     Returns first most common lap duration for driver.
+
+    return: float
     """
     return laps_df["lap_duration"].mode().iloc[0]
 
 
 def _avg_sentiment_by_lap(radios_df: pd.DataFrame):
-    """ Returns Series with average sentiment values with lap number as index. """
+    """
+    Returns Series with average sentiment values with lap number as index.
+
+    return: lap_sentiments: DataFrame
+    """
     lap_sentiments = (radios_df[["lap_number", "sentiment"]]
                       .groupby(["lap_number"])
                       .mean()
@@ -215,7 +228,9 @@ def _avg_sentiment_by_lap(radios_df: pd.DataFrame):
 
 def _fill_initial_lap(laps_df: pd.DataFrame, sessions_df: pd.DataFrame, session_key: int):
     """
-    Fills in possible missing initial lap start timestamp.
+    Fills in initial lap start timestamp, if not present.
+
+    return: laps_df: DataFrame
     """
     if pd.isna(laps_df["date_start"].iloc[0]):
         laps_df.loc[0, "date_start"] = sessions_df.loc[(sessions_df.session_key == session_key)]["date_start"].iloc[0]
