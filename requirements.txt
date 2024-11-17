@@ -1,3 +1,7 @@
+assemblyai
 fastapi==0.100.1
+httpx
 pandas
+pytest
+requests
 uvicorn[standard]==0.23.2
