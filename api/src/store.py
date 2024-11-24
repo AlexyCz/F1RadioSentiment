@@ -9,15 +9,24 @@ class SessionData:
     API Data Store class containing all necessary data structures needed across
         all requests throughout a session.
     """
-    def __init__(self) -> None:
-        self.drivers_df = pd.DataFrame(columns=["session_key"])
-        self.laps_df = pd.DataFrame(columns=["session_key"])
-        self.meetings_df = pd.DataFrame(columns=["year"])
-        self.radios_df = pd.DataFrame(columns=["session_key"])
-        self.sessions_df = pd.DataFrame(columns=["session_key"])
-        self.current_session_key = 0
-        self.current_meeting_key = 0
-        self.desired_year = 2023
+    def __init__(self,
+                 drivers: dict = {"session_key": []},
+                 laps: dict = {"session_key": []},
+                 meetings: dict = {"session_key": []},
+                 radios: dict = {"session_key": []},
+                 sessions: dict = {"session_key": []},
+                 session_key: int = 0,
+                 meeting_key: int = 0,
+                 year: int = 2023) -> None:
+
+        self.drivers_df = pd.DataFrame(drivers)
+        self.laps_df = pd.DataFrame(laps)
+        self.meetings_df = pd.DataFrame(meetings)
+        self.radios_df = pd.DataFrame(radios)
+        self.sessions_df = pd.DataFrame(sessions)
+        self.current_session_key = session_key
+        self.current_meeting_key = meeting_key
+        self.desired_year = year
 
 
 app_session_data = SessionData()  # Instantiate app data store object
