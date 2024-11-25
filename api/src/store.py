@@ -12,7 +12,7 @@ class SessionData:
     def __init__(self,
                  drivers: dict = {"session_key": []},
                  laps: dict = {"session_key": []},
-                 meetings: dict = {"session_key": []},
+                 meetings: dict = {"year": []},
                  radios: dict = {"session_key": []},
                  sessions: dict = {"session_key": []},
                  session_key: int = 0,
