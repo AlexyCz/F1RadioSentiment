@@ -17,6 +17,7 @@
 
 # misc
 .DS_Store
+expansion-notes.txt
 *.pem
 expansion-notes.txt
 .zed

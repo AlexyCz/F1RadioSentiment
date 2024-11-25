@@ -1,0 +1,151 @@
+{
+  "lap_duration": 105.255,
+  "lap_sentiment": {
+    "7": 0.3333333333333333,
+    "10": -0.25,
+    "16": 0,
+    "23": 0.3333333333333333,
+    "32": 0.3333333333333333,
+    "34": 0,
+    "35": 1,
+    "41": 0,
+    "42": 0,
+    "64": 0.64
+  },
+  "radio": [
+    {
+      "session_key": 9598,
+      "meeting_key": 1245,
+      "driver_number": 4,
+      "date": "2024-09-15T11:15:08.773000+00:00",
+      "recording_url": "https://livetiming.formula1.com/static/2024/2024-09-15_Azerbaijan_Grand_Prix/2024-09-15_Race/TeamRadio/LANNOR01_4_20240915_131435.mp3",
+      "sentiment": 0.3333333333333333,
+      "text": "Lando. How are the tires? Yeah, they feel all right at the minute.",
+      "race_start": "2024-09-15T11:01:45.255000+00:00",
+      "delta": 803.518,
+      "lap_number": 7
+    },
+    {
+      "session_key": 9598,
+      "meeting_key": 1245,
+      "driver_number": 4,
+      "date": "2024-09-15T11:20:09.661000+00:00",
+      "recording_url": "https://livetiming.formula1.com/static/2024/2024-09-15_Azerbaijan_Grand_Prix/2024-09-15_Race/TeamRadio/LANNOR01_4_20240915_131954.mp3",
+      "sentiment": -0.25,
+      "text": "The medium is not graining yet. If anything, it's suffering from thermal deck. You are doing a better job than the other car. They're struggling with rearse.",
+      "race_start": "2024-09-15T11:01:45.255000+00:00",
+      "delta": 1104.406,
+      "lap_number": 10
+    },
+    {
+      "session_key": 9598,
+      "meeting_key": 1245,
+      "driver_number": 4,
+      "date": "2024-09-15T11:31:09.015000+00:00",
+      "recording_url": "https://livetiming.formula1.com/static/2024/2024-09-15_Azerbaijan_Grand_Prix/2024-09-15_Race/TeamRadio/LANNOR01_4_20240915_133046.mp3",
+      "sentiment": 0,
+      "text": "Lando, can you do anything to hold Perez up in the middle sector without hurting yourself? Yeah. For how long? One or two laps. This LAPD.",
+      "race_start": "2024-09-15T11:01:45.255000+00:00",
+      "delta": 1763.76,
+      "lap_number": 16
+    },
+    {
+      "session_key": 9598,
+      "meeting_key": 1245,
+      "driver_number": 4,
+      "date": "2024-09-15T11:42:45.090000+00:00",
+      "recording_url": "https://livetiming.formula1.com/static/2024/2024-09-15_Azerbaijan_Grand_Prix/2024-09-15_Race/TeamRadio/LANNOR01_4_20240915_134209.mp3",
+      "sentiment": 0.3333333333333333,
+      "text": "You struggling? A little bit. Okay, mate, the pace might feel, but you're doing a really good job.",
+      "race_start": "2024-09-15T11:01:45.255000+00:00",
+      "delta": 2459.835,
+      "lap_number": 23
+    },
+    {
+      "session_key": 9598,
+      "meeting_key": 1245,
+      "driver_number": 4,
+      "date": "2024-09-15T11:58:47.257000+00:00",
+      "recording_url": "https://livetiming.formula1.com/static/2024/2024-09-15_Azerbaijan_Grand_Prix/2024-09-15_Race/TeamRadio/LANNOR01_4_20240915_135825.mp3",
+      "sentiment": 0.3333333333333333,
+      "text": "Yeah, I just don't have the pace advantage, mate. I can't get close enough. Okay, mate, we're considering doing something different then.",
+      "race_start": "2024-09-15T11:01:45.255000+00:00",
+      "delta": 3422.002,
+      "lap_number": 32
+    },
+    {
+      "session_key": 9598,
+      "meeting_key": 1245,
+      "driver_number": 4,
+      "date": "2024-09-15T12:01:33.342000+00:00",
+      "recording_url": "https://livetiming.formula1.com/static/2024/2024-09-15_Azerbaijan_Grand_Prix/2024-09-15_Race/TeamRadio/LANNOR01_4_20240915_140127.mp3",
+      "sentiment": 0,
+      "text": "Okay, mate, this is our time.",
+      "race_start": "2024-09-15T11:01:45.255000+00:00",
+      "delta": 3588.087,
+      "lap_number": 34
+    },
+    {
+      "session_key": 9598,
+      "meeting_key": 1245,
+      "driver_number": 4,
+      "date": "2024-09-15T12:03:13.137000+00:00",
+      "recording_url": "https://livetiming.formula1.com/static/2024/2024-09-15_Azerbaijan_Grand_Prix/2024-09-15_Race/TeamRadio/LANNOR01_4_20240915_140250.mp3",
+      "sentiment": 1,
+      "text": "If you can keep this pace up, it's Mega.",
+      "race_start": "2024-09-15T11:01:45.255000+00:00",
+      "delta": 3687.882,
+      "lap_number": 35
+    },
+    {
+      "session_key": 9598,
+      "meeting_key": 1245,
+      "driver_number": 4,
+      "date": "2024-09-15T12:15:21.956000+00:00",
+      "recording_url": "https://livetiming.formula1.com/static/2024/2024-09-15_Azerbaijan_Grand_Prix/2024-09-15_Race/TeamRadio/LANNOR01_4_20240915_141351.mp3",
+      "sentiment": 0,
+      "text": "Bess paced to the end in order to catch Verstappen.",
+      "race_start": "2024-09-15T11:01:45.255000+00:00",
+      "delta": 4416.701,
+      "lap_number": 41
+    },
+    {
+      "session_key": 9598,
+      "meeting_key": 1245,
+      "driver_number": 4,
+      "date": "2024-09-15T12:16:29.553000+00:00",
+      "recording_url": "https://livetiming.formula1.com/static/2024/2024-09-15_Azerbaijan_Grand_Prix/2024-09-15_Race/TeamRadio/LANNOR01_4_20240915_141556.mp3",
+      "sentiment": 0,
+      "text": "And Lando, imagine Andrea on your shoulder saying, zero wheel, spin every exit.",
+      "race_start": "2024-09-15T11:01:45.255000+00:00",
+      "delta": 4484.298,
+      "lap_number": 42
+    },
+    {
+      "session_key": 9598,
+      "meeting_key": 1245,
+      "driver_number": 4,
+      "date": "2024-09-15T12:55:46.483000+00:00",
+      "recording_url": "https://livetiming.formula1.com/static/2024/2024-09-15_Azerbaijan_Grand_Prix/2024-09-15_Race/TeamRadio/LANNOR01_4_20240915_145458.mp3",
+      "sentiment": 0.64,
+      "text": "Congrats. More done. Nice to be. Yeah, good effort, mate. Your bit in the middle there helped that, so thank you very much. You also got a fastest lap. Yeah. Well done, everyone. Awesome points, nice result. Good comeback from day yesterday. Nothing we could have done but nice to get some points back. Thank you. Yeah, good effort, mate. Great race and do you mind if I dedicate this to someone? Go ahead, Will. Of course you can. My dad passed away ten years ago today as I was on the way to Singapore or just about to leave to Singapore. So this is to him who would be very proud of us all. Of course. See. Well, thanks, mate. Awesome team result so everyone should be very proud. Cheers, dude. What a mate. Holding up Perez was what made the race for Oscar, so thank you for.",
+      "race_start": "2024-09-15T11:01:45.255000+00:00",
+      "delta": 6841.228,
+      "lap_number": 64
+    }
+  ],
+  "driver": {
+    "session_key": 9598,
+    "meeting_key": 1245,
+    "broadcast_name": "L NORRIS",
+    "country_code": "GBR",
+    "first_name": "Lando",
+    "full_name": "Lando NORRIS",
+    "headshot_url": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/L/LANNOR01_Lando_Norris/lannor01.png.transform/1col/image.png",
+    "last_name": "Norris",
+    "driver_number": 4,
+    "team_colour": "FF8000",
+    "team_name": "McLaren",
+    "name_acronym": "NOR"
+  }
+}
