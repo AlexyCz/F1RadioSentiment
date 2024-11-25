@@ -19,6 +19,8 @@
 .DS_Store
 expansion-notes.txt
 *.pem
+expansion-notes.txt
+.zed
 
 # debug
 npm-debug.log*
@@ -27,6 +29,7 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.venv
 
 # vercel
 .vercel
