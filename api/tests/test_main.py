@@ -51,7 +51,7 @@ def test_get_available_races_by_year(mock_available_races_by_year,
                                      override_get_app_session_data):
 
     expected_call_kwargs = {
-        "meetings_df": pd.DataFrame({"session_key": []}),
+        "meetings_df": pd.DataFrame({"year": []}),
         "year": 2024
     }
 
@@ -88,7 +88,7 @@ def test_get_participating_drivers(mock_participating_drivers,
 
     expected_call_kwargs = {
         "drivers_df": pd.DataFrame({"session_key": []}),
-        "meetings_df": pd.DataFrame({"session_key": []}),
+        "meetings_df": pd.DataFrame({"year": []}),
         "sessions_df": pd.DataFrame({"session_key": []}),
         "year": 2023,
         "current_session_key": 0,
