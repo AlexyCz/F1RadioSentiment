@@ -166,6 +166,9 @@ def _set_radio_lap_numbers(radios_df: pd.DataFrame, laps_df: pd.DataFrame):
                               left_on="date",
                               right_on="date_start")
                               .rename(columns={"date_start": "lap_date_start"}))
+
+    radios_df["lap_number"] = radios_df["lap_number"].fillna(0)
+    radios_df["lap_date_start"] = radios_df["lap_date_start"].fillna(radios_df["date"])
     return radios_df
 
 
