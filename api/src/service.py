@@ -56,8 +56,9 @@ def participating_drivers(drivers_df: pd.DataFrame,
 
     session_drivers_data = _process_open_f1_request(FormulaOneUrls.GET_DRIVERS, session_key=current_session_key)
     drivers_df = drivers_df.merge(pd.DataFrame(session_drivers_data), how="outer")
+    driver_list = drivers_df.loc[(drivers_df.session_key==current_session_key), "full_name"].to_list()
 
-    return (drivers_df["full_name"].to_list(),
+    return (driver_list,
             drivers_df,
             sessions_df,
             current_session_key)
