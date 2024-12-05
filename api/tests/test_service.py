@@ -2,8 +2,10 @@ from unittest.mock import patch
 
 import pandas as pd
 import pytest
+# import requests
 from fastapi.testclient import TestClient
 
+from api.src.constants import FormulaOneUrls
 from api.src.service import (
     _avg_sentiment_by_lap,
     _fill_initial_lap,
@@ -84,3 +86,16 @@ def test_get_lap_time_mode():
     result = _get_lap_time_mode(pd.DataFrame(input_data))  # laps_df
 
     assert expected_data == result
+
+
+@pytest.mark.parametrize("req, kwargs, expected", [
+    (FormulaOneUrls.GET_DRIVERS, {"session_key": 99}, ("https://api.openf1.org/v1/drivers?session_key=99",)),
+    (FormulaOneUrls.GET_LAPS, {"session_key": 99, "driver_num": 44}, ("https://api.openf1.org/v1/laps?session_key=99&driver_number=44",)),
+    (FormulaOneUrls.GET_MEETINGS, {"year": 2023}, ("https://api.openf1.org/v1/meetings?year=2023",)),
+    (FormulaOneUrls.GET_RADIO, {"session_key": 99, "driver_num": 44}, ("https://api.openf1.org/v1/team_radio?session_key=99&driver_number=44",)),
+    (FormulaOneUrls.GET_SESSIONS, {"meeting_key": 11}, ("https://api.openf1.org/v1/sessions?session_name=Race&meeting_key=11",)),
+])
+@patch("api.src.service.requests.get")
+def test_process_open_f1_request(mock_get_request, req, kwargs, expected):
+    _process_open_f1_request(req, **kwargs)
+    assert mock_get_request.call_args.args == expected
