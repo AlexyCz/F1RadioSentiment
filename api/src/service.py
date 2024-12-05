@@ -25,7 +25,7 @@ def available_races_by_year(meetings_df: pd.DataFrame,
 
     meetings_df = meetings_df.merge(race_data_df, how="outer")
 
-    grandprix = meetings_df["meeting_name"].to_list()
+    grandprix = meetings_df.loc[meetings_df.year==year, "meeting_name"].to_list()
 
     return grandprix, meetings_df
 
