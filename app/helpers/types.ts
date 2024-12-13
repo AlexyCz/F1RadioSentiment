@@ -1,27 +1,41 @@
+/**
+ * ENDPOINT TYPES
+ */
 // lap_duration: string
 // lap_sentiment: convert to array of objects??
 // lap
 
-type LapSentiment = {
-  [key: string]: number;
+export type LapSentiment = LapSentimentInfo[];
+
+export type LapSentimentInfo = {
+  lap_number: number;
+  sentiment: number;
 };
 
-type RadioInfo = {
+export type RadioInfo = {
+  date: string; // could be DateTime
+  driver_number: number;
   session_key: number;
   meeting_key: number;
-  driver_number: number;
-  date: string; // could be DateTime
   recording_url: string;
-  sentiment: number;
-  text: string;
-  race_start: string; // could be DateTime
-  delta: number;
+  lap_date_start: string; // could be DateTime
   lap_number: number;
+  sentiment: number;
+  conversation_analysis: Conversation[];
 };
 
-type Radios = RadioInfo[];
+export type Radios = RadioInfo[];
 
-type Driver = {
+export type Conversation = {
+  text: string;
+  start: number;
+  end: number;
+  sentiment: string; // "NEGATIVE" | "NEUTRAL" | "POSTIVE"
+  confidence: number;
+  speaker: string;
+};
+
+export type Driver = {
   session_key: number;
   meeting_key: number;
   broadcast_name: string;
@@ -30,8 +44,38 @@ type Driver = {
   full_name: string;
   headshot_url: string; // image url
   last_name: string;
-  driver_number: 63;
+  driver_number: number;
   team_colour: string; // hex value could be used for something
   team_name: string;
   name_acronym: string;
+};
+
+/**
+ * CONTEXT TYPES
+ */
+
+export type Step = "HOME" | "SIMULATION";
+
+export type RaceInfo = {
+  name: string;
+  year: string;
+  driverSelected: string;
+};
+
+export type StepContextType = {
+  currentStep: Step;
+  setCurrentStep: (step: Step) => void;
+  clearSelections: boolean;
+  setClearSelections: (selection: boolean) => void;
+  isLoading: boolean;
+  setIsLoading: (loading: boolean) => void;
+  simRaceInfo: RaceInfo | null;
+  setSimRaceInfo: (info: RaceInfo | null) => void;
+};
+
+export type DropDownProps = {
+  onChange: (e: any) => void;
+  value: string;
+  type: "YEAR" | "DRIVER" | "RACE";
+  options: string[] | number[];
 };

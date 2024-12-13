@@ -1,0 +1,339 @@
+{
+  "data": {
+    "lap_duration": 91.563,
+    "lap_avg_sentiment": [
+      {
+        "lap_number": 21,
+        "sentiment": -0.16666666666666666
+      },
+      {
+        "lap_number": 29,
+        "sentiment": 0
+      },
+      {
+        "lap_number": 35,
+        "sentiment": -0.5
+      },
+      {
+        "lap_number": 37,
+        "sentiment": 1
+      },
+      {
+        "lap_number": 41,
+        "sentiment": 0
+      },
+      {
+        "lap_number": 52,
+        "sentiment": 0.8846153846153846
+      }
+    ],
+    "radio": [
+      {
+        "session_key": 9558,
+        "meeting_key": 1240,
+        "driver_number": 44,
+        "date": "2024-07-07T14:34:44.810000+00:00",
+        "recording_url": "https://livetiming.formula1.com/static/2024/2024-07-07_British_Grand_Prix/2024-07-07_Race/TeamRadio/LEWHAM01_44_20240707_153419.mp3",
+        "lap_number": 21,
+        "lap_date_start": "2024-07-07T14:34:16.551000+00:00",
+        "sentiment": -0.16666666666666666,
+        "conversation_analysis": [
+          {
+            "text": "And loose.",
+            "start": 3960,
+            "end": 4304,
+            "confidence": 0.5588181,
+            "speaker": "A",
+            "sentiment": "NEUTRAL"
+          },
+          {
+            "text": "We think it's time to jump to Inters.",
+            "start": 4304,
+            "end": 5617,
+            "confidence": 0.77760595,
+            "speaker": "A",
+            "sentiment": "NEUTRAL"
+          },
+          {
+            "text": "Let us know what you think.",
+            "start": 5641,
+            "end": 6769,
+            "confidence": 0.850157,
+            "speaker": "A",
+            "sentiment": "NEUTRAL"
+          },
+          {
+            "text": "No.",
+            "start": 6937,
+            "end": 7645,
+            "confidence": 0.49361873,
+            "speaker": "A",
+            "sentiment": "NEUTRAL"
+          },
+          {
+            "text": "Okay, Copy.",
+            "start": 8305,
+            "end": 9129,
+            "confidence": 0.68966216,
+            "speaker": "A",
+            "sentiment": "NEUTRAL"
+          },
+          {
+            "text": "It's dry in a lot of places.",
+            "start": 9177,
+            "end": 10185,
+            "confidence": 0.5373694,
+            "speaker": "A",
+            "sentiment": "NEGATIVE"
+          }
+        ]
+      },
+      {
+        "session_key": 9558,
+        "meeting_key": 1240,
+        "driver_number": 44,
+        "date": "2024-07-07T14:48:32.628000+00:00",
+        "recording_url": "https://livetiming.formula1.com/static/2024/2024-07-07_British_Grand_Prix/2024-07-07_Race/TeamRadio/LEWHAM01_44_20240707_154756.mp3",
+        "lap_number": 29,
+        "lap_date_start": "2024-07-07T14:47:24.424000+00:00",
+        "sentiment": 0,
+        "conversation_analysis": [
+          {
+            "text": "Okay, Lucy, this is our time.",
+            "start": 3920,
+            "end": 4816,
+            "confidence": 0.65408194,
+            "speaker": "A",
+            "sentiment": "NEUTRAL"
+          }
+        ]
+      },
+      {
+        "session_key": 9558,
+        "meeting_key": 1240,
+        "driver_number": 44,
+        "date": "2024-07-07T14:57:58.177000+00:00",
+        "recording_url": "https://livetiming.formula1.com/static/2024/2024-07-07_British_Grand_Prix/2024-07-07_Race/TeamRadio/LEWHAM01_44_20240707_155741.mp3",
+        "lap_number": 35,
+        "lap_date_start": "2024-07-07T14:57:34.436000+00:00",
+        "sentiment": -0.5,
+        "conversation_analysis": [
+          {
+            "text": "Just info.",
+            "start": 3120,
+            "end": 3592,
+            "confidence": 0.7728065,
+            "speaker": "A",
+            "sentiment": "NEUTRAL"
+          },
+          {
+            "text": "George retired with a suspected water system issue.",
+            "start": 3592,
+            "end": 6105,
+            "confidence": 0.5489142,
+            "speaker": "A",
+            "sentiment": "NEGATIVE"
+          }
+        ]
+      },
+      {
+        "session_key": 9558,
+        "meeting_key": 1240,
+        "driver_number": 44,
+        "date": "2024-07-07T15:01:14.355000+00:00",
+        "recording_url": "https://livetiming.formula1.com/static/2024/2024-07-07_British_Grand_Prix/2024-07-07_Race/TeamRadio/LEWHAM01_44_20240707_160054.mp3",
+        "lap_number": 37,
+        "lap_date_start": "2024-07-07T15:00:58.721000+00:00",
+        "sentiment": 1,
+        "conversation_analysis": [
+          {
+            "text": "Sun's coming out.",
+            "start": 3040,
+            "end": 3536,
+            "confidence": 0.6802721,
+            "speaker": "A",
+            "sentiment": "POSITIVE"
+          }
+        ]
+      },
+      {
+        "session_key": 9558,
+        "meeting_key": 1240,
+        "driver_number": 44,
+        "date": "2024-07-07T15:08:25.385000+00:00",
+        "recording_url": "https://livetiming.formula1.com/static/2024/2024-07-07_British_Grand_Prix/2024-07-07_Race/TeamRadio/LEWHAM01_44_20240707_160752.mp3",
+        "lap_number": 41,
+        "lap_date_start": "2024-07-07T15:07:43.491000+00:00",
+        "sentiment": 0,
+        "conversation_analysis": [
+          {
+            "text": "So, Norris, same tire.",
+            "start": 4200,
+            "end": 5385,
+            "confidence": 0.73023474,
+            "speaker": "A",
+            "sentiment": "NEUTRAL"
+          }
+        ]
+      },
+      {
+        "session_key": 9558,
+        "meeting_key": 1240,
+        "driver_number": 44,
+        "date": "2024-07-07T15:27:44.653000+00:00",
+        "recording_url": "https://livetiming.formula1.com/static/2024/2024-07-07_British_Grand_Prix/2024-07-07_Race/TeamRadio/LEWHAM01_44_20240707_162640.mp3",
+        "lap_number": 52,
+        "lap_date_start": "2024-07-07T15:24:09.955000+00:00",
+        "sentiment": 0.7692307692307693,
+        "conversation_analysis": [
+          {
+            "text": "Get in there, Lewis.",
+            "start": 4280,
+            "end": 5516,
+            "confidence": 0.8070957,
+            "speaker": "A",
+            "sentiment": "NEUTRAL"
+          },
+          {
+            "text": "You the man.",
+            "start": 6585,
+            "end": 7817,
+            "confidence": 0.5243437,
+            "speaker": "A",
+            "sentiment": "POSITIVE"
+          },
+          {
+            "text": "You're the man.",
+            "start": 7961,
+            "end": 9245,
+            "confidence": 0.7923111,
+            "speaker": "A",
+            "sentiment": "POSITIVE"
+          },
+          {
+            "text": "Oh, mate, I have been waiting for this.",
+            "start": 10505,
+            "end": 12605,
+            "confidence": 0.4704377,
+            "speaker": "A",
+            "sentiment": "POSITIVE"
+          },
+          {
+            "text": "Jeez, thank you so much, guys.",
+            "start": 12985,
+            "end": 18897,
+            "confidence": 0.9793093,
+            "speaker": "A",
+            "sentiment": "POSITIVE"
+          },
+          {
+            "text": "It means a lot.",
+            "start": 19041,
+            "end": 20009,
+            "confidence": 0.90576553,
+            "speaker": "A",
+            "sentiment": "POSITIVE"
+          },
+          {
+            "text": "It means a lot to get this one.",
+            "start": 20137,
+            "end": 21697,
+            "confidence": 0.9162734,
+            "speaker": "A",
+            "sentiment": "POSITIVE"
+          },
+          {
+            "text": "Big thank you to all the fans here.",
+            "start": 21881,
+            "end": 23425,
+            "confidence": 0.9843525,
+            "speaker": "A",
+            "sentiment": "POSITIVE"
+          },
+          {
+            "text": "Love you guys.",
+            "start": 23545,
+            "end": 24605,
+            "confidence": 0.97197616,
+            "speaker": "A",
+            "sentiment": "POSITIVE"
+          },
+          {
+            "text": "We will prevail.",
+            "start": 26625,
+            "end": 27633,
+            "confidence": 0.63094443,
+            "speaker": "B",
+            "sentiment": "POSITIVE"
+          },
+          {
+            "text": "We never give up.",
+            "start": 27689,
+            "end": 28729,
+            "confidence": 0.50656235,
+            "speaker": "B",
+            "sentiment": "NEUTRAL"
+          },
+          {
+            "text": "And what a sign of for our giant trajectory here on the British Grand Prix.",
+            "start": 28817,
+            "end": 33845,
+            "confidence": 0.5897016,
+            "speaker": "B",
+            "sentiment": "NEUTRAL"
+          },
+          {
+            "text": "We couldn't wish for anything better.",
+            "start": 34005,
+            "end": 35365,
+            "confidence": 0.7832158,
+            "speaker": "B",
+            "sentiment": "POSITIVE"
+          }
+        ]
+      },
+      {
+        "session_key": 9558,
+        "meeting_key": 1240,
+        "driver_number": 44,
+        "date": "2024-07-07T15:29:55.120000+00:00",
+        "recording_url": "https://livetiming.formula1.com/static/2024/2024-07-07_British_Grand_Prix/2024-07-07_Race/TeamRadio/LEWHAM01_44_20240707_162919.mp3",
+        "lap_number": 52,
+        "lap_date_start": "2024-07-07T15:24:09.955000+00:00",
+        "sentiment": 1,
+        "conversation_analysis": [
+          {
+            "text": "This one means a lot to us all.",
+            "start": 3960,
+            "end": 5325,
+            "confidence": 0.9412903,
+            "speaker": "A",
+            "sentiment": "POSITIVE"
+          },
+          {
+            "text": "Love you both.",
+            "start": 5745,
+            "end": 6305,
+            "confidence": 0.97054875,
+            "speaker": "A",
+            "sentiment": "POSITIVE"
+          }
+        ]
+      }
+    ],
+    "driver": {
+      "session_key": 9558,
+      "meeting_key": 1240,
+      "broadcast_name": "L HAMILTON",
+      "country_code": "GBR",
+      "first_name": "Lewis",
+      "full_name": "Lewis HAMILTON",
+      "headshot_url": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/L/LEWHAM01_Lewis_Hamilton/lewham01.png.transform/1col/image.png",
+      "last_name": "Hamilton",
+      "driver_number": 44,
+      "team_colour": "27F4D2",
+      "team_name": "Mercedes",
+      "name_acronym": "HAM"
+    }
+  }
+}

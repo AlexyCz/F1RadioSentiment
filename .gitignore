@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/api/src/__pycache__/
 /.pnp
 .pnp.js
 

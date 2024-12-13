@@ -1,4 +1,15 @@
-// TODO: add any constants that won't change
-// e.g. yearsAvailable
-// params for endpoint calls
-// the full set up of fetching / returning a result json (try/catch)
+export const yearsAvailable = [2023, 2024];
+
+/** endpoint helpers */
+export const requestOptions: RequestInit = {
+  method: "GET",
+  mode: "cors",
+  credentials: "include",
+  // cache: "force-cache",
+};
+
+export const dropDownPlaceholders = {
+  YEAR: "🗓️ Select a year 🗓️",
+  RACE: "🏎️ Select a race 🏎️",
+  DRIVER: "👨🏻 Select a driver 👨🏻",
+};
