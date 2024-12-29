@@ -12,6 +12,10 @@
     "42": 0,
     "64": 0.64
   },
+  "lap_sentiment": [
+    { "lap_number": 7, "sentiment": 0.33 },
+    { "lap_number": 10, "sentiment": -0.25 }
+  ],
   "radio": [
     {
       "session_key": 9598,

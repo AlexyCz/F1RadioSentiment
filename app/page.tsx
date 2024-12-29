@@ -1,5 +1,10 @@
-import Simulation from "./(home_components)/simulation";
+import LandingPage from "./(home_components)/landing_page";
+import { StepProvider } from "./helpers/context";
 
 export default function Home() {
-  return <Simulation />;
+  return (
+    <StepProvider>
+      <LandingPage />
+    </StepProvider>
+  );
 }
