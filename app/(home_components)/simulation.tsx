@@ -30,7 +30,7 @@ import {
 
 const groupLapRadios = (radios: Radios, lapRequested: number) => {
   const lapRadios = radios.filter(
-    (r: RadioInfo) => r.lap_number === lapRequested
+    (r: RadioInfo) => r.lap_number === lapRequested,
   );
   const lapConvos = lapRadios.map((r: RadioInfo) => {
     return r.conversation_analysis.map((c: Conversation) => c.text);
@@ -61,10 +61,8 @@ export default function Simulation() {
       let data;
       try {
         const res = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/races/driver_data/${
-            simRaceInfo!.driverSelected
-          }`,
-          requestOptions
+          `/api/races/driver_data/${simRaceInfo!.driverSelected}`,
+          requestOptions,
         );
         if (!res.ok) {
           setShowingBackupData(true);
@@ -176,7 +174,7 @@ export default function Simulation() {
                 setShowTranscript(true);
                 const radiosMapping = groupLapRadios(
                   radios!,
-                  payload.payload.lap_number
+                  payload.payload.lap_number,
                 );
                 setCurrentTranscripts(radiosMapping);
               },
@@ -188,7 +186,7 @@ export default function Simulation() {
       {showTranscript && (
         <div className="text-black font-medium font-mono text-center bg-white sm:w-1/2 rounded-md p-2 sm:p-4 mt-3 sm:mt-6 text-sm sm:text-base">
           {currentTranscripts.map((transcript) =>
-            transcript.map((str, index) => <p key={index}>{`"${str}"`}</p>)
+            transcript.map((str, index) => <p key={index}>{`"${str}"`}</p>),
           )}
         </div>
       )}

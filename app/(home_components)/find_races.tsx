@@ -16,10 +16,7 @@ export default function FindRaces() {
   useEffect(() => {
     async function fetchRaces() {
       try {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/races/${yearSelected}`,
-          requestOptions
-        );
+        const res = await fetch(`/api/races/${yearSelected}`, requestOptions);
         if (!res.ok) {
           throw new Error(`HTTP error! Status: ${res.status}`);
         }
@@ -41,10 +38,7 @@ export default function FindRaces() {
   useEffect(() => {
     async function fetchDrivers() {
       try {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/drivers/${raceSelected}`,
-          requestOptions
-        );
+        const res = await fetch(`/api/drivers/${raceSelected}`, requestOptions);
         if (!res.ok) {
           throw new Error(`HTTP error! Status: ${res.status}`);
         }
