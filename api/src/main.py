@@ -15,14 +15,6 @@ from api.src.store import SessionData, get_app_session_data
 
 app = FastAPI()
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://127.0.0.1:8000", "http://127.0.0.1:3000"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
 
 @app.on_event("startup")
 def init_session():
@@ -30,10 +22,22 @@ def init_session():
     Loads necessary environment variables.
     """
     # get_app_session_data()
+    cors_origins = ["https://sentimentvroom.vercel.app"]
+
     if os.getenv("VERCEL_ENV") is None:
         load_dotenv(".env.local")
+        cors_origins = ["http://localhost:3000",
+                        "http://127.0.0.1:8000",
+                        "http://127.0.0.1:3000"]
 
     aai.settings.api_key = os.getenv("ASSEMBLYAI_API_KEY")
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=cors_origins,
+        allow_credentials=True,
+        allow_methods=["GET"],
+        allow_headers=["*"],
+    )
 
 
 @app.get("/")
