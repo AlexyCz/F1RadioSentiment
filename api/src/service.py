@@ -49,9 +49,14 @@ def participating_drivers(drivers_df: pd.DataFrame,
                      current_session_key: int
     """
     logger.info(f'Filtering meetings df...')
+    logger.info(f'meeing name: {meeting_name}, year: {year}')
     logger.info(f'meeings df: {meetings_df}')
+
     current_meeting_df = meetings_df.loc[(meetings_df.meeting_name==meeting_name) &
                                           (meetings_df.year == year)]
+
+    logger.info(f'requested meeting df: {current_meeting_df}')
+
     current_meeting_key = current_meeting_df["meeting_key"].values[0]
 
     race_session_data = _process_open_f1_request(FormulaOneUrls.GET_SESSIONS, meeting_key=current_meeting_key)
