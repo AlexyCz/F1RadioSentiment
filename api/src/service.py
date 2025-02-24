@@ -2,12 +2,15 @@
 from builtins import Exception
 
 import assemblyai as aai
+import logging
 import pandas as pd
 import requests
 
 from api.src.constants import AAI_CONFIG, FormulaOneUrls, SENTIMENT_INT_MAP
 from api.src.utils import convert_to_dt, standardize_with_microseconds
 
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 def available_races_by_year(meetings_df: pd.DataFrame,
                             year: int = 2023):
@@ -45,6 +48,8 @@ def participating_drivers(drivers_df: pd.DataFrame,
                      sessions_df: DataFrame,
                      current_session_key: int
     """
+    logger.info(f'Filtering meetings df...')
+    logger.info(f'meeings df: {meetings_df}')
     current_meeting_df = meetings_df.loc[(meetings_df.meeting_name==meeting_name) &
                                           (meetings_df.year == year)]
     current_meeting_key = current_meeting_df["meeting_key"].values[0]
