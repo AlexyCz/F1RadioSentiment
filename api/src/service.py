@@ -5,6 +5,7 @@ import assemblyai as aai
 import logging
 import pandas as pd
 import requests
+from urllib.parse import unquote
 
 from api.src.constants import AAI_CONFIG, FormulaOneUrls, SENTIMENT_INT_MAP
 from api.src.utils import convert_to_dt, standardize_with_microseconds
@@ -48,6 +49,8 @@ def participating_drivers(drivers_df: pd.DataFrame,
                      sessions_df: DataFrame,
                      current_session_key: int
     """
+    meeting_name = unquote(meeting_name)
+
     logger.info(f'Filtering meetings df...')
     logger.info(f'meeing name: {meeting_name}, year: {year}')
     logger.info(f'meeings df: {meetings_df}')
@@ -87,6 +90,7 @@ def driver_race_radio_data(drivers_df: pd.DataFrame,
                     radio: List(Dict),
                     driver: Dict
     """
+    driver_name = unquote(driver_name)
     current_driver_df = drivers_df.loc[(drivers_df.full_name==driver_name) &
                                          (drivers_df.session_key==current_session_key)]
 
