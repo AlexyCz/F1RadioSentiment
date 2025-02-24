@@ -2,6 +2,7 @@
 import os
 
 import assemblyai as aai
+import logging
 from dotenv import load_dotenv
 from fastapi import Depends, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -14,6 +15,8 @@ from api.src.service import (
 from api.src.store import SessionData, get_app_session_data
 
 cors_origins = []
+logging.basicConfig(level=logging.ERROR)
+logger = logging.getLogger(__name__)
 
 app = FastAPI()
 app.add_middleware(
@@ -103,4 +106,5 @@ def get_participating_drivers(meeting_name: str,
 
         return {"data": available_drivers}
     except Exception as e:
+        logger.exception('We got a problem here in meeting_name get...')
         raise HTTPException(status_code=500, detail=str(e))
