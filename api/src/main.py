@@ -15,7 +15,7 @@ from api.src.service import (
 from api.src.store import SessionData, get_app_session_data
 
 cors_origins = []
-logging.basicConfig(level=logging.ERROR)
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 app = FastAPI()
@@ -33,7 +33,8 @@ def init_session():
     """
     Loads necessary environment variables.
     """
-    # get_app_session_data()
+    logger.info(f'Initializing api and configurations...')
+
     global cors_origins
 
     if os.getenv("VERCEL_ENV") is None:
@@ -60,11 +61,14 @@ def get_available_races_by_year(input_year: int,
     Given year as input, return all Grand Prix for said Formula 1 calendar year.
     """
     try:
+        logger.info(f'GET available_races_by_year...')
+
         data.desired_year = input_year
         available_grandprix, data.meetings_df = available_races_by_year(meetings_df = data.meetings_df,
                                                                         year=data.desired_year)
         return {"data": available_grandprix}
     except Exception as e:
+        logger.exception(f'Failure in getting available races by year:\n')
         raise HTTPException(status_code=500, detail=str(e))
 
 
@@ -77,12 +81,14 @@ def get_driver_race_data(driver_name: str,
             with prior inputs from user.
     """
     try:
+        logger.info(f'GET driver_race_data...')
         driver_radio_data = driver_race_radio_data(drivers_df=data.drivers_df,
                                                    sessions_df=data.sessions_df,
                                                    current_session_key=data.current_session_key,
                                                    driver_name=driver_name)
         return {"data": driver_radio_data}
     except Exception as e:
+        logger.exception(f'Failure in getting driver race data:\n')
         raise HTTPException(status_code=500, detail=str(e))
 
 
@@ -94,6 +100,7 @@ def get_participating_drivers(meeting_name: str,
             returns the full driver list.
     """
     try:
+        logger.info(f'GET participating_drivers...')
         (available_drivers,
          data.drivers_df,
          data.sessions_df,
@@ -106,5 +113,5 @@ def get_participating_drivers(meeting_name: str,
 
         return {"data": available_drivers}
     except Exception as e:
-        logger.exception('We got a problem here in meeting_name get...')
+        logger.exception('Failure getting participating drivers:\n')
         raise HTTPException(status_code=500, detail=str(e))
