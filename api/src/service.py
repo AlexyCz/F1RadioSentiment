@@ -2,12 +2,16 @@
 from builtins import Exception
 
 import assemblyai as aai
+import logging
 import pandas as pd
 import requests
+from urllib.parse import unquote
 
 from api.src.constants import AAI_CONFIG, FormulaOneUrls, SENTIMENT_INT_MAP
 from api.src.utils import convert_to_dt, standardize_with_microseconds
 
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 def available_races_by_year(meetings_df: pd.DataFrame,
                             year: int = 2023):
@@ -17,10 +21,13 @@ def available_races_by_year(meetings_df: pd.DataFrame,
 
     return: tuple -> (grandprix: List, meetings_df: DataFrame)
     """
+    logger.info(f'Finding races and their information for {year}...')
+
     race_data = _process_open_f1_request(FormulaOneUrls.GET_MEETINGS, year=year)
     race_data_df = pd.DataFrame(race_data).iloc[1:]  # removes "pre-season testing" index [0] from meetings df
 
     if race_data_df.empty:
+        logger.info(f'available_races_by_year: Empty race_data dataframe.\n')
         raise Exception
 
     meetings_df = meetings_df.merge(race_data_df, how="outer")
@@ -45,8 +52,13 @@ def participating_drivers(drivers_df: pd.DataFrame,
                      sessions_df: DataFrame,
                      current_session_key: int
     """
+    logger.info(f'Finding all drivers participating in the {meeting_name}...')
+
+    meeting_name = unquote(meeting_name)  # removes incorrectly decoded chars.
+
     current_meeting_df = meetings_df.loc[(meetings_df.meeting_name==meeting_name) &
                                           (meetings_df.year == year)]
+
     current_meeting_key = current_meeting_df["meeting_key"].values[0]
 
     race_session_data = _process_open_f1_request(FormulaOneUrls.GET_SESSIONS, meeting_key=current_meeting_key)
@@ -77,6 +89,9 @@ def driver_race_radio_data(drivers_df: pd.DataFrame,
                     radio: List(Dict),
                     driver: Dict
     """
+    logger.info(f'Processing {driver_name} race radio data...')
+
+    driver_name = unquote(driver_name)
     current_driver_df = drivers_df.loc[(drivers_df.full_name==driver_name) &
                                          (drivers_df.session_key==current_session_key)]
 
@@ -124,6 +139,8 @@ def _process_open_f1_request(request: FormulaOneUrls, **kwargs):
 
     return: Dict
     """
+    logger.info(f'Processing OPENF1 GET request to {request.value}...')
+
     resp = requests.Response()
     if request == FormulaOneUrls.GET_DRIVERS:
         get_drivers_url = FormulaOneUrls.GET_DRIVERS.value.format(session_key=
@@ -152,6 +169,7 @@ def _process_open_f1_request(request: FormulaOneUrls, **kwargs):
     if resp.ok:
         return resp.json()
     else:
+        logger.info(f'_process_open_f1_request: empty response received.')
         return {}
 
 
@@ -162,6 +180,8 @@ def _set_radio_lap_numbers(radios_df: pd.DataFrame, laps_df: pd.DataFrame):
 
     return: radios_df: DataFrame
     """
+    logger.info(f'Setting nearest lap number based on radio timestamp...')
+
     radios_df = (pd.merge_asof(radios_df, laps_df[["lap_number", "date_start"]],
                               left_on="date",
                               right_on="date_start")
@@ -179,6 +199,8 @@ def _transcribe_radio_recordings(radios_df: pd.DataFrame):
 
     return: radios_df: DataFrame
     """
+    logger.info(f'Setting transcriptions and sentiments...')
+
     recordings = radios_df["recording_url"].to_list()
 
     transcriptions = []
@@ -214,6 +236,8 @@ def _get_lap_time_mode(laps_df: pd.DataFrame):
 
     return: float
     """
+    logger.info(f'Calculating mode of lap times...')
+
     return laps_df["lap_duration"].mode().iloc[0]
 
 
@@ -223,6 +247,8 @@ def _avg_sentiment_by_lap(radios_df: pd.DataFrame):
 
     return: lap_sentiments: DataFrame
     """
+    logger.info(f'Setting average lap sentiment values...')
+
     lap_sentiments = (radios_df[["lap_number", "sentiment"]]
                       .groupby(["lap_number"])
                       .mean()
@@ -236,6 +262,8 @@ def _fill_initial_lap(laps_df: pd.DataFrame, sessions_df: pd.DataFrame, session_
 
     return: laps_df: DataFrame
     """
+    logger.info(f'Setting initially NaN lap time...')
+
     if pd.isna(laps_df["date_start"].iloc[0]):
         laps_df.loc[0, "date_start"] = sessions_df.loc[(sessions_df.session_key == session_key)]["date_start"].iloc[0]
     return laps_df
