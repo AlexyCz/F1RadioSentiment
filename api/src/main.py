@@ -7,12 +7,12 @@ from dotenv import load_dotenv
 from fastapi import Depends, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
-from api.src.service import (
+from .service import (
     available_races_by_year,
     driver_race_radio_data,
     participating_drivers,
 )
-from api.src.store import SessionData, get_app_session_data
+from .store import SessionData, get_app_session_data
 
 cors_origins = []
 logging.basicConfig(level=logging.INFO)

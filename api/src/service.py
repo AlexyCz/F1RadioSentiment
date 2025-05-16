@@ -7,8 +7,8 @@ import pandas as pd
 import requests
 from urllib.parse import unquote
 
-from api.src.constants import AAI_CONFIG, FormulaOneUrls, SENTIMENT_INT_MAP
-from api.src.utils import convert_to_dt, standardize_with_microseconds
+from .constants import AAI_CONFIG, FormulaOneUrls, SENTIMENT_INT_MAP
+from .utils import convert_to_dt, standardize_with_microseconds
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)

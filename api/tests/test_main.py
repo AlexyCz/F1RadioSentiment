@@ -14,7 +14,7 @@ tester_client = TestClient(app)
 def override_get_app_session_data():
     data = SessionData()
     app.dependency_overrides[get_app_session_data] = lambda: data
-    yield data
+    return data
 
 @pytest.fixture
 def mock_return_participating_drivers():
