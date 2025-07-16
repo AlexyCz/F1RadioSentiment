@@ -1,4 +1,4 @@
-export const yearsAvailable = [2023, 2024];
+export const yearsAvailable = [2023, 2024, 2025];
 
 /** endpoint helpers */
 export const requestOptions: RequestInit = {
