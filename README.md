@@ -1,3 +1,43 @@
+# Backend Development Summary
+
+Hey there! Here's a quick look at what I did on the backend for our F1 Radio Sentiment project. We used FastAPI to handle all the heavy lifting and data processing.
+
+## What It Does
+
+The backend pulls in data from various Formula 1 races, figures out which drivers are racing, and processes their radio communications to understand their mood. Here's how:
+
+## The Key Endpoints
+
+1. **Get Races**: `/api/races/{year}`
+
+   - **Purpose**: Grabs all the Grand Prix races for a given year.
+   - **How**: Pulls data from the OpenF1 API and lists out the races.
+
+2. **Get Drivers**: `/api/drivers/{meeting_name}`
+
+   - **Purpose**: Lists all the drivers in a selected race.
+   - **How**: Fetches participant info via session keys from OpenF1.
+
+3. **Driver Data**: `/api/races/driver_data/{driver_name}`
+   - **Purpose**: Fetches everything we need about a driver, like lap times and radio messages.
+   - **How**: It even uses AssemblyAI to analyze sentiment from their radio clips. Cool, right?
+
+## How It Works
+
+- **APIs on APIs**: I leveraged endpoints from OpenF1 to get all our race, session, and driver information.
+- **Data Wrangling with Pandas**: Loaded all that sweet data into Pandas DataFrames for some slick data manipulation.
+- **Sentiment Analysis**: AssemblyAI Transcriber does the heavy lifting by analyzing the sentiment of the driver's radio clips.
+
+## What Made It Tick
+
+- **Automatic Updates**: Keeps the data fresh by integrating with OpenF1 endpoints.
+- **Smart Fallbacks**: Uses sample data if any API fails, so our app keeps running smoothly.
+- **Seamless Coordination**: Wires up the frontend with efficient CORS setups, so everything talks to each other perfectly.
+
+So, that's the gist! The backend ensures our app is stocked with accurate F1 race data and driver sentiments, turning what could be just radio noise into meaningful emotional insights.
+
+---
+
 <p align="center">
   <a href="https://nextjs-fastapi-starter.vercel.app/">
     <img src="https://assets.vercel.com/image/upload/v1588805858/repositories/vercel/logo.png" height="96">
