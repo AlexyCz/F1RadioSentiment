@@ -1,15 +1,44 @@
-<p align="center">
-  <a href="https://nextjs-fastapi-starter.vercel.app/">
-    <img src="https://assets.vercel.com/image/upload/v1588805858/repositories/vercel/logo.png" height="96">
-    <h3 align="center">Next.js FastAPI Starter</h3>
-  </a>
-</p>
+# Frontend Development Summary
 
-<p align="center">Simple Next.js boilerplate that uses <a href="https://fastapi.tiangolo.com/">FastAPI</a> as the API backend.</p>
+@lgodz15 here 👋🏼
 
-<br/>
+I worked on the frontend for this F1 radio sentiment app. Basically, we wanted to see how drivers talk to their race engineers throughout a race - are they happy 😄, frustrated 😔, or just keeping it neutral 😐?
 
-## Introduction
+## The User Flow I Created
+
+### Step 1: Pick Your Setup
+
+I built this simple dropdown system where you:
+
+- Pick a year (2023, 2024, 2025)
+- Pick a race (loads dynamically based on the year)
+- Pick a driver (loads based on the race you chose)
+
+### Step 2: Run the Simulation
+
+Once you hit "Start simulation", it loads up this interactive chart that shows the driver's emotional journey lap by lap. You can click on any of the emoji dots to see exactly what they said during that lap.
+
+## How I Talk to the Backend
+
+I made three main API calls:
+
+1. **Getting races**: `/api/races/{year}` - When you pick a year, I fetch all the races for that season
+2. **Getting drivers**: `/api/drivers/{race_name}` - When you pick a race, I grab all the drivers who participated
+3. **Getting the good stuff**: `/api/races/driver_data/{driver_name}` - This is where the magic happens - I get all the sentiment data, radio transcripts, and driver info for the visualization
+
+## Cool Features I Added
+
+- **Mobile-friendly**: Works great on phones with touch interactions
+- **Fallback data**: If the API is having issues, I show sample data so the app doesn't break
+- **Loading screen**: While we're crunching the data, users get fun F1 facts about the track
+- **Interactive chart**: Click any point to see what the driver actually said
+- **Responsive design**: Looks good on desktop and mobile
+
+The whole thing is built with Next.js and uses AssemblyAI on the backend to analyze all those radio clips. Pretty neat way to see how drivers handle the pressure during a race!
+
+---
+
+## [Next.js documentation] Introduction
 
 This is a hybrid Next.js + Python app that uses Next.js as the frontend and FastAPI as the API backend. One great use case of this is to write Next.js apps that use Python AI libraries on the backend.
 
