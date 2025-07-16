@@ -73,11 +73,11 @@ export default function Simulation() {
         }
       } catch (error) {
         console.error("Error fetching data:", error);
-
         setShowingBackupData(true);
         // backup data used if needed
         data = hamiltonData.data;
       }
+      
       setLapDuration(data.lap_duration);
       setLapSentiment(data.lap_avg_sentiment);
       setRadios(data.radio);
@@ -88,7 +88,7 @@ export default function Simulation() {
     if (isLoading) {
       fetchSimData();
     }
-  });
+  }, [isLoading, simRaceInfo]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -134,6 +134,7 @@ export default function Simulation() {
       </div>
       <ResponsiveContainer
         width="100%"
+        height={400}
         aspect={onMobile ? 0.65 : showTranscript ? 3 : 2.3}
       >
         <LineChart
