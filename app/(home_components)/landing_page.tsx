@@ -23,7 +23,7 @@ export default function LandingPage() {
               width={800}
               height={500}
               alt="desktop app header"
-              priority
+              priority={true}
               quality={100}
             />
             <Image
@@ -31,7 +31,7 @@ export default function LandingPage() {
               src="/mobile_header.png"
               width={800}
               height={500}
-              priority
+              priority={true}
               alt="mobile app header"
             />
             <div className="sm:w-2/3 max-w-[1000px] text-black font-medium font-mono text-center sm:text-justify mb-6 sm:mb-4 text-sm sm:text-base">
@@ -66,7 +66,7 @@ export default function LandingPage() {
               width={20}
               height={20}
               alt="gh logo"
-              priority
+              priority={true}
             />
           </Link>
         </div>
