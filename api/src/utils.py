@@ -1,5 +1,6 @@
 """ UTILS MODULE: Provides non-business logic resuable functions """
 import pandas as pd
+import re
 
 
 def concatenate_dataframes(x_df: pd.DataFrame, y_df: pd.DataFrame):
@@ -34,3 +35,14 @@ def convert_to_dt(x_df: pd.DataFrame, column: str):
     """
     x_df[column] = pd.to_datetime(x_df[column], format="%Y-%m-%dT%H:%M:%S.%f%z")
     return x_df
+    
+def normalize_long_strings(input: str = "") -> str:
+    """
+    Normalizes space separated strings for better field indexing.
+    
+    return string
+    """
+    
+    modified_string = "_".join(input.lower().split())
+    
+    return modified_string if input else ""

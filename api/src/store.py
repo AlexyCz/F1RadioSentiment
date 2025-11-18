@@ -49,7 +49,8 @@ class Driver(BaseModel):
     """
     defines a driver...
     """
-    driver_info: DriverInfo
+    number: int
+    full_name: str
     session_key: int  # foreign key
     radio_transcript: List[dict]
     lap_avg_sentiment: float
@@ -186,37 +187,41 @@ class RaceStore:
     #         value=Driver(**from_json(driver.json), allow_partial=True)  # type: ignore
     #     )
     
-    def deserialize_document(self, document: Document, index: str) -> Union[MeetingDocument, DriverDocument]:
-        """ modular single doc deserializer..."""
-        if index == MEETING_INDEX:
-            return MeetingDocument(
-                id=document.id,
-                value=Meeting(**from_json(document.json), allow_partial=True)  # type: ignore
-            )
+    def deserialize_meeting_document(self, document: Document, index: str) -> MeetingDocument:
+        """ returns meeting document..."""
+        return MeetingDocument(
+            id=document.id,
+            value=Meeting(**from_json(document.json), allow_partial=True)  # type: ignore
+        )
         
-        else:
-            return DriverDocument(
-                id=document.id,
-                value=Driver(**from_json(document.json), allow_partial=True)  # type: ignore
-            )
     
-    def deserialize_documents(self, documents: List[Document], index: str) -> Union[Meetings, Drivers]
+    def deserialize_driver_document(self, document: Document, index: str) -> DriverDocument:
+        """ returns driver document """
+        return DriverDocument(
+            id=document.id,
+            value=Driver(**from_json(document.json), allow_partial=True)  # type: ignore
+        )
+    
+    def deserialize_meetings(self, documents: List[Document], index: str) -> Meetings:
         """ modular can take args with a string model target """
-        if index == self.MEETING_INDEX:
-            document_list = Meetings(docs=[])
-        
-        else:
-            document_list = Drivers(docs=[])
+        meetings = Meetings(docs=[])
         
         for d in documents:
-            document_list.docs.append(self.deserialize_document(document=d, index=index))
+            meetings.docs.append(self.deserialize_meeting_document(document=d, index=index))
         
-        return document_list
+        return meetings
     
-    """ TODO: searches and creates
-        refernce: notion tech spec
-    """
-    def search_by_year(self, year: int) -> Meetings:
+    def deserialize_drivers(self, documents: List[Document], index: str) -> Drivers:
+         """ modular can take args with a string model target """
+         drivers = Drivers(docs=[])
+         
+         for d in documents:
+             drivers.docs.append(self.deserialize_driver_document(document=d, index=index))
+         
+         return drivers
+
+
+    def search_year(self, year: int) -> Union[Meetings, None]:
         search = []
         
         if year is not None and year > 2000:
@@ -224,13 +229,44 @@ class RaceStore:
         
         try:
             results = await self.redis.ft(self.MEETING_INDEX).search(Query(" ".join(search)))
-            deserialized_results = self.deserialize_documents(documents=results.docs, index=self.MEETING_INDEX)
+            deserialized_results = self.deserialize_meetings(documents=results.docs, index=self.MEETING_INDEX)
             
-            if deserialized_results and isinstance(deserialized_results, list):
-                return Meetings(
-                    docs=deserialized_results
-                )
+            return deserialized_results
+        
+        except Exception as e:
+            # logger.error(f"error getting meeting by year: {e}...")
+            return None
+    
+    def search_driver(self, driver_number: int, session_key: int) -> Union[Drivers, None]:
+        search = []
+        
+        search.extend([f"@number:({driver_number})", f"@session_key:({session_key})"])
+        
+        try:
+            result = await self.redis.ft(self.DRIVER_INDEX).search(Query(" ".join(search)))
+            deserialized_results = self.deserialize_drivers(documents=result.docs, index=self.DRIVER_INDEX)
+            
+            return deserialized_results
+
+        except Exception as e:
+            # logger.error(f"error getting driver: {e}...")
+            return None
+    
+    
+    """ TODO: creates
+        refernce: notion tech spec
+    """
+    def create_meeting(self, **kwargs) -> MeetingDocument:
+        time_now = datetime.now(UTC)
+        
         pass
+    
+    def create_driver(self,) -> DriverDocument:
+        time_now = datetime.now(UTC)
+        pass
+    
+    
+
 '''
     TODOs:
         class Meeting(BaseModel):

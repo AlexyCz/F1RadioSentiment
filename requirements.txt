@@ -2,6 +2,8 @@ assemblyai
 fastapi==0.100.1
 httpx
 pandas
+pydantic>=2.11.5
 pytest
+redis
 requests
 uvicorn[standard]==0.23.2
