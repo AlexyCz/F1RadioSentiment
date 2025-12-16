@@ -1,22 +1,98 @@
 """ DATASTORE module contains current data store structures. """
 import asyncio
 import re
-from datetime import UTC, datetime
-from enum import Enum
-from typing import List, Optional, Union, NamedTuple, Sequence
+from datetime import timezone, datetime
+from typing import List, Optional, Union, NamedTuple
 from uuid import uuid4
 
 from pydantic import BaseModel, field_serializer
 from pydantic_core import from_json
 from redis.asyncio import Redis
 from redis.commands.search.document import Document
-from redis.commands.search.field import TextField, NumericField
+from redis.commands.search.field import Field, TextField, NumericField
 from redis.commands.search.index_definition import IndexDefinition, IndexType
+from redis.commands.search.result import Result
 from redis.commands.search.query import Query
 from redis.exceptions import ResponseError
 
-from api.src import redis
 # from app.logger import logger
+""" ******************************************************** DONE *********************************************************
+    reference: notion tech spec/notes;
+    
+    class DriverInfo(NamedTuple):
+        
+        number: int
+        
+        full_name: str
+        
+    
+    class Meeting(BaseModel):
+    
+			year: int
+			
+			meeting_name: str # look at typing library and strings
+			
+			session_key: int  # foreign key; via openF1 and the session endpoint;
+			
+			participating_drivers: List[DriverInfo] # list of DriverInfo tuples;
+		
+		
+		class Driver(BaseModel):
+		
+			session_key: int  # foreign key
+			
+			driver_number: int
+			
+			radio_transcript: List[Dict{}]
+			
+			lap_avg_sentiment: float
+			
+			team_name: str
+			
+			full_name: str
+			~OPTIONAL~
+    
+			mode_lap_time: float
+				# lap_duration - requires laps endpoint to be called, might be for v2 
+
+
+    domain model;
+    document model;
+    TBD: collection model -> class YourCollectionModel(BaseModel):
+                                total: int
+                                items: List[YourDocumentModel]
+    
+    repo model:
+    class YourRepository:
+        def __init__(self, redis: Redis):
+            self.redis = redis
+            self.INDEX = "your-index"
+            self.PREFIX = "your-prefix:"
+        
+        async def initialize(self) -> None:
+            await self.create_index_if_not_exists()
+        
+        # Implement CRUD operations following the same patterns
+        # reference redis-starter:store.py
+    
+    Key Patterns to Adopt
+    
+    1. Enum-based constraints for controlled vocabularies
+    2. Custom field serializers for consistent API formats
+    3. Separate domain and document models for clean architecture
+    4. Async batch operations for performance
+    5. Comprehensive error handling with specific exception types
+    6. Idempotent initialization methods
+    7. Type hints everywhere for better IDE support and runtime validation
+    
+    4. Redis-Specific Best Practices
+    
+    1. Use prefixes to organize different document types
+    2. Create search indices for complex queries
+    3. Leverage JSON paths for nested field indexing
+    4. Handle Redis-specific errors gracefully
+    5. Use connection pooling (handled by redis-py automatically)
+"""
 
 DRIVER_INDEX = "driver-idx"
 DRIVER_PREFIX = "driver:"
@@ -91,7 +167,7 @@ class Drivers(BaseModel):
 
 class RaceStore:
     """ stores and retrieves meeting and driver documents """
-    def __init__(self) -> None:
+    def __init__(self, redis: Redis) -> None:
         self.redis = redis
         self.MEETING_INDEX = MEETING_INDEX
         self.MEETING_PREFIX = MEETING_PREFIX
@@ -126,22 +202,22 @@ class RaceStore:
         
         # logger.debug("creating index {self.index}")
         
-        meeting_schema = (
+        meeting_schema = [
             NumericField("$.year", as_name="year"),
             NumericField("$.session_key", as_name="session_key"),
             TextField("$.meeting_name", as_name="meeting_name")
-        )
+        ]
         
-        driver_schema = (
+        driver_schema: List[Field] = [
             NumericField("$.driver_number", as_name="driver_number"),
             NumericField("$.session_key", as_name="session_key")
-        )
+        ]
         
         try:
             if not meeting_index_exists:
                 await self.redis.ft(self.MEETING_INDEX).create_index(
                     meeting_schema,
-                    definition=IndexDefinition(prefix=[MEETING_PREFIX], index_type=IndexType.JSON)
+                    definition=IndexDefinition(prefix=[self.MEETING_PREFIX], index_type=IndexType.JSON)
                 )
 
         except Exception as e:
@@ -154,7 +230,7 @@ class RaceStore:
             if not driver_index_exists:
                 await self.redis.ft(self.DRIVER_INDEX).create_index(
                     driver_schema,
-                    definition=IndexDefinition(prefix=[DRIVER_PREFIX], index_type=IndexType.JSON)
+                    definition=IndexDefinition(prefix=[self.DRIVER_PREFIX], index_type=IndexType.JSON)
                 )
 
         except Exception as e:
@@ -175,61 +251,48 @@ class RaceStore:
         
         return f"{target_prefix}{id}"
     
-    # def deserialize_meeting_document(self, meeting: Document) -> MeetingDocument:
-    #     return MeetingDocument(
-    #         id=meeting.id,
-    #         value=Meeting(**from_json(meeting.json), allow_partial=True)  # type: ignore
-    #     )
-    
-    # def deserialize_driver_document(self, driver: Document) -> DriverDocument:
-    #     return DriverDocument(
-    #         id=driver.id,
-    #         value=Driver(**from_json(driver.json), allow_partial=True)  # type: ignore
-    #     )
-    
-    def deserialize_meeting_document(self, document: Document, index: str) -> MeetingDocument:
+    def deserialize_meeting_document(self, document: Document) -> MeetingDocument:
         """ returns meeting document..."""
         return MeetingDocument(
             id=document.id,
             value=Meeting(**from_json(document.json), allow_partial=True)  # type: ignore
         )
-        
-    
-    def deserialize_driver_document(self, document: Document, index: str) -> DriverDocument:
+
+    def deserialize_driver_document(self, document: Document) -> DriverDocument:
         """ returns driver document """
         return DriverDocument(
             id=document.id,
             value=Driver(**from_json(document.json), allow_partial=True)  # type: ignore
         )
     
-    def deserialize_meetings(self, documents: List[Document], index: str) -> Meetings:
+    def deserialize_meetings(self, documents: List[Document]) -> Meetings:
         """ modular can take args with a string model target """
         meetings = Meetings(docs=[])
         
         for d in documents:
-            meetings.docs.append(self.deserialize_meeting_document(document=d, index=index))
+            meetings.docs.append(self.deserialize_meeting_document(document=d))
         
         return meetings
     
-    def deserialize_drivers(self, documents: List[Document], index: str) -> Drivers:
+    def deserialize_drivers(self, documents: List[Document]) -> Drivers:
          """ modular can take args with a string model target """
          drivers = Drivers(docs=[])
          
          for d in documents:
-             drivers.docs.append(self.deserialize_driver_document(document=d, index=index))
+             drivers.docs.append(self.deserialize_driver_document(document=d))
          
          return drivers
 
 
-    def search_year(self, year: int) -> Union[Meetings, None]:
+    async def search_year(self, year: int) -> Union[Meetings, None]:
         search = []
         
         if year is not None and year > 2000:
             search.append(f"@year:{year}")
         
         try:
-            results = await self.redis.ft(self.MEETING_INDEX).search(Query(" ".join(search)))
-            deserialized_results = self.deserialize_meetings(documents=results.docs, index=self.MEETING_INDEX)
+            results: Result = await self.redis.ft(self.MEETING_INDEX).search(Query(" ".join(search)))  # type: ignore
+            deserialized_results = self.deserialize_meetings(documents=results.docs)
             
             return deserialized_results
         
@@ -237,14 +300,14 @@ class RaceStore:
             # logger.error(f"error getting meeting by year: {e}...")
             return None
     
-    def search_driver(self, driver_number: int, session_key: int) -> Union[Drivers, None]:
+    async def search_driver(self, driver_number: int, session_key: int) -> Union[Drivers, None]:
         search = []
         
         search.extend([f"@number:({driver_number})", f"@session_key:({session_key})"])
         
         try:
-            result = await self.redis.ft(self.DRIVER_INDEX).search(Query(" ".join(search)))
-            deserialized_results = self.deserialize_drivers(documents=result.docs, index=self.DRIVER_INDEX)
+            result: Result = await self.redis.ft(self.DRIVER_INDEX).search(Query(" ".join(search)))  # type: ignore
+            deserialized_results = self.deserialize_drivers(documents=result.docs)
             
             return deserialized_results
 
@@ -252,91 +315,93 @@ class RaceStore:
             # logger.error(f"error getting driver: {e}...")
             return None
     
-    
-    """ TODO: creates
-        refernce: notion tech spec
-    """
-    def create_meeting(self, **kwargs) -> MeetingDocument:
-        time_now = datetime.now(UTC)
+    async def create_meeting(self, **kwargs) -> MeetingDocument:
+        """
+        key word arguments that defines a meeting:
         
-        pass
-    
-    def create_driver(self,) -> DriverDocument:
-        time_now = datetime.now(UTC)
-        pass
-    
-    
-
-'''
-    TODOs:
-        class Meeting(BaseModel):
+        year: int
+        session_key: int  # foreign key; via openF1 and the session endpoint;
+        meeting_name: str # look at typing library and strings;
+        participating_drivers: List[DriverInfo] # list of DriverInfo tuples;
         
-			year: int
-			
-			meeting_name: str # look at typing library and strings
-			
-			session_key: int  # foreign key; via openF1 and the session endpoint;
-			
-			drivers: List[str] # list of integers representing their driver number
-		
-		
-		class Driver(BaseModel):
-		
-			session_key: int  # foreign key
-			
-			driver_number: int
-			
-			radio_transcript: List[Dict{}]
-			
-			lap_avg_sentiment: float
-			
-			team_name: str
-			
-			full_name: str
-			~OPTIONAL~
+        """
         
-			mode_lap_time: float
-				# lap_duration - requires laps endpoint to be called, might be for v2 
-
-        domain model;
-        document model;
-        TBD: collection model -> class YourCollectionModel(BaseModel):
-                                    total: int
-                                    items: List[YourDocumentModel]
+        time_now = datetime.now(timezone.utc)
         
-        repo model:
-        class YourRepository:
-            def __init__(self, redis: Redis):
-                self.redis = redis
-                self.INDEX = "your-index"
-                self.PREFIX = "your-prefix:"
+        required = ["year", "session_key", "meeting_name", "participating_drivers"]
+        
+        input_args = { req_key: kwargs.get(req_key, None) for req_key in required }  # gathered args
+        
+        if not all(input_args.values()):
+            raise Exception(f"Meeting requires all values; inputs given: {input_args}")
             
-            async def initialize(self) -> None:
-                await self.create_index_if_not_exists()
-            
-            # Implement CRUD operations following the same patterns
-            # reference redis-starter:store.py
+        meeting = MeetingDocument(id=self.format_id(id=str(uuid4()), target_prefix=self.MEETING_PREFIX),
+                                  value=Meeting(
+                                      year=kwargs["year"],
+                                      session_key=kwargs["session_key"],
+                                      meeting_name=kwargs["meeting_name"],
+                                      participating_drivers=kwargs["participating_drivers"],
+                                      created_date=time_now
+                                  )
+        )
         
-        Key Patterns to Adopt
-        
-        1. Enum-based constraints for controlled vocabularies
-        2. Custom field serializers for consistent API formats
-        3. Separate domain and document models for clean architecture
-        4. Async batch operations for performance
-        5. Comprehensive error handling with specific exception types
-        6. Idempotent initialization methods
-        7. Type hints everywhere for better IDE support and runtime validation
-        
-        4. Redis-Specific Best Practices
-        
-        1. Use prefixes to organize different document types
-        2. Create search indices for complex queries
-        3. Leverage JSON paths for nested field indexing
-        4. Handle Redis-specific errors gracefully
-        5. Use connection pooling (handled by redis-py automatically)
-    '''
+        try:
+            success = await self.redis.json().set(meeting.id, "$", meeting.value.model_dump())  # type: ignore
+        except Exception as e:
+            # logger.error(f"error creating meeting")
+            raise
 
-# from fastapi import Depends
+        if not success:
+            raise Exception(f"error creating meeting: {meeting}")
+        
+        return meeting
+    
+    async def create_driver(self,**kwargs) -> DriverDocument:
+        """
+        key word arguments that defines a driver:
+        
+        number: int
+        full_name: str
+        session_key: int  # foreign key
+        radio_transcript: List[dict]
+        lap_avg_sentiment: float
+        team_name: str
+        
+        """
+        time_now = datetime.now(timezone.utc)
+        
+        required = ["number", "full_name", "session_key", "radio_transcript", "lap_avg_sentiment", "team_name"]
+        
+        input_args = { req_key: kwargs.get(req_key, None) for req_key in required}
+        
+        if not all(input_args.values()):
+            raise Exception(f"Driver requires all values; inputs given: {input_args}")
+        
+        driver = DriverDocument(
+                    id=self.format_id(id=str(uuid4()), target_prefix=self.DRIVER_PREFIX),
+                    value=Driver(
+                        number=kwargs["number"],
+                        full_name=kwargs["full_name"],
+                        session_key=kwargs["session_key"],
+                        radio_transcript=kwargs["radio_transcript"],
+                        lap_avg_sentiment=kwargs["lap_avg_sentiment"],
+                        team_name=kwargs["team_name"],
+                        created_date=time_now
+                    )
+        )
+
+        try:
+            success = await self.redis.json().set(driver.id, "$", driver.value.model_dump())  # type: ignore
+        except Exception as e:
+            # logger the e
+            raise
+        
+        if not success:
+            raise Exception(f"error creating driver: {driver}")
+        
+        return driver
+
+# from fastapi import Depends ******************************************************** OLD STORE *********************************************************
 
 # import pandas as pd
 
