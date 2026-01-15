@@ -22,6 +22,7 @@ expansion-notes.txt
 *.pem
 expansion-notes.txt
 .zed
+.notes
 
 # debug
 npm-debug.log*
